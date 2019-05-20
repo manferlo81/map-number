@@ -3,6 +3,7 @@ const CI = process.env.CI;
 module.exports = {
 
   testEnvironment: "node",
+  cacheDirectory: ".cache/jest",
 
   collectCoverage: true,
   collectCoverageFrom: [
