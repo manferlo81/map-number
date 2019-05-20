@@ -4,9 +4,9 @@ module.exports = {
 
   testEnvironment: "node",
 
-  collectCoverage: false,
+  collectCoverage: true,
   collectCoverageFrom: [
-    "dist"
+    "dist/**"
   ],
   coverageDirectory: "coverage",
   coverageReporters: [
