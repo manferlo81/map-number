@@ -2,6 +2,8 @@
 
 processing/p5.js map like function, including floating point numbers
 
+> :warning: this `map` function has nothing to do with `Array.prototype.map` method.
+
 ## Install
 
 #### npm
@@ -14,26 +16,51 @@ npm install map-number
 
 #### map
 
+*maps a number in a range to a different range, returning a floting point number, including number outside the given output range.*
+
 ```typescript
-function map(num: number, min: number, max: number, outMin: number, outMax: number): number
+function map(num: number, min: number, max: number, outMin: number, outMax: number): number;
 ```
 
 #### floor
 
+*maps a number in a range to a different range, returning a number truncated to the inmediate previous integer number, including number outside the given output range.*
+
 ```typescript
-function floor(num: number, min: number, max: number, outMin: number, outMax: number): number
+function floor(num: number, min: number, max: number, outMin: number, outMax: number): number;
 ```
 
 #### round
 
+*maps a number in a range to a different range, returning a number rounded to the closest integer number, including number outside the given output range.*
+
 ```typescript
-function round(num: number, min: number, max: number, outMin: number, outMax: number): number
+function round(num: number, min: number, max: number, outMin: number, outMax: number): number;
 ```
 
 #### limit
 
+*maps a number in a range to a different range, returning a floting point number, limiting the result to the given output range.*
+
 ```typescript
-function limit(num: number, min: number, max: number, outMin: number, outMax: number): number
+function limit(num: number, min: number, max: number, outMin: number, outMax: number): number;
+```
+
+#### create
+
+*creates a single argument function implementing the given [`map`](#map), [`floor`](#floor), [`round`](#round) or [`limit`](#limit) function, useful when you need to map values multiple times with the same arguments, [see example](#example)*
+
+```typescript
+function create(func: MapFunction, min: number, max: number, outMin: number, outMax: number): (num: number) => number;
+```
+
+##### example
+
+```javascript
+const myMap = create(map, -1, 1, 0, 10);
+myMap(0.5);
+// ... is equivalent to...
+map(0.5, -1, 1, 0, 10);
 ```
 
 ## License
