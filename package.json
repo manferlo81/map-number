@@ -1,0 +1,42 @@
+{
+  "name": "map-number",
+  "version": "1.0.0",
+  "description": "processing/p5.js map like function",
+  "main": "dist/map.cjs.js",
+  "module": "dist/map.es.js",
+  "browser": "dist/map.umd.js",
+  "typings": "types/index.d.ts",
+  "bundlib": {
+    "equals": true,
+    "name": "map",
+    "umd": "dist/map.umd.js"
+  },
+  "scripts": {
+    "dev": "bundlib -dw",
+    "build": "bundlib -d"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/manferlo81/map-number.git"
+  },
+  "keywords": [
+    "processing",
+    "p5",
+    "p5.js",
+    "map"
+  ],
+  "author": "",
+  "bugs": {
+    "url": "https://github.com/manferlo81/map-number/issues"
+  },
+  "homepage": "https://github.com/manferlo81/map-number#readme",
+  "devDependencies": {
+    "bundlib": "^0.2.5"
+  },
+  "files": [
+    "dist",
+    "types",
+    "scr"
+  ],
+  "license": "MIT"
+}
