@@ -6,7 +6,7 @@ describe("limit method", () => {
 
     expect(
       limit(3.3, 2, 5, 20, 50)
-    ).toBe(
+    ).toBeCloseTo(
       33
     );
 
@@ -16,13 +16,13 @@ describe("limit method", () => {
 
     expect(
       limit(1, 2, 5, 20, 50)
-    ).toBe(
+    ).toBeCloseTo(
       20
     );
 
     expect(
       limit(6, 2, 5, 20, 50)
-    ).toBe(
+    ).toBeCloseTo(
       50
     );
 

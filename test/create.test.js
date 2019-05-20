@@ -1,13 +1,15 @@
-const { map } = require("..");
+const { create, map } = require("..");
 
-describe("map method", () => {
+describe("create method", () => {
+
+  const myMap = create(map, 2, 5, 20, 50);
 
   test("should return in-range output", () => {
 
     expect(
-      map(3, 2, 5, 20, 26)
+      myMap(3.3)
     ).toBeCloseTo(
-      22
+      33
     );
 
   });
@@ -15,15 +17,15 @@ describe("map method", () => {
   test("should return out-range output", () => {
 
     expect(
-      map(6, 2, 5, 20, 26)
+      myMap(6.1)
     ).toBeCloseTo(
-      28
+      61
     );
 
     expect(
-      map(1, 2, 5, 20, 26)
+      myMap(1.7)
     ).toBeCloseTo(
-      18
+      17
     );
 
   });
@@ -31,7 +33,7 @@ describe("map method", () => {
   test("should return non integer output", () => {
 
     expect(
-      map(33.1, 10, 90, 1, 9)
+      myMap(0.331)
     ).toBeCloseTo(
       3.31
     );
