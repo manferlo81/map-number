@@ -12,6 +12,12 @@ processing/p5.js map like function, including floating point numbers
 npm install map-number
 ```
 
+#### jsDelivr
+
+```html
+<script src="https://cdn.jsdelivr.net/npm/map-number/dist/map.umd.min.js"></script>
+```
+
 ## API
 
 #### map
@@ -54,7 +60,7 @@ function limit(num: number, min: number, max: number, outMin: number, outMax: nu
 function create(func: MapFunction, min: number, max: number, outMin: number, outMax: number): (num: number) => number;
 ```
 
-##### example
+###### example
 
 ```javascript
 const myMap = create(map, -1, 1, 0, 10);
