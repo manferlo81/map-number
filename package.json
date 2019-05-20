@@ -13,7 +13,8 @@
   },
   "scripts": {
     "dev": "bundlib -dw",
-    "build": "bundlib -d"
+    "build": "bundlib -d",
+    "test": "jest --color"
   },
   "repository": {
     "type": "git",
@@ -31,7 +32,11 @@
   },
   "homepage": "https://github.com/manferlo81/map-number#readme",
   "devDependencies": {
-    "bundlib": "^0.2.5"
+    "@types/jest": "^24.0.13",
+    "bundlib": "^0.2.5",
+    "eslint": "^5.16.0",
+    "jest": "^24.8.0",
+    "tslint": "^5.16.0"
   },
   "files": [
     "dist",
