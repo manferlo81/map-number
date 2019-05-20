@@ -7,7 +7,6 @@
   "browser": "dist/map.umd.js",
   "typings": "types/index.d.ts",
   "bundlib": {
-    "equals": true,
     "name": "map",
     "umd": "dist/map.umd.js"
   },
