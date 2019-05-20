@@ -10,6 +10,12 @@
     "name": "map",
     "umd": "dist/map.umd.js"
   },
+  "keywords": [
+    "processing",
+    "p5",
+    "p5.js",
+    "map"
+  ],
   "scripts": {
     "clean": "rm -rf dist types coverage",
     "lint": "tslint src/**",
@@ -18,21 +24,6 @@
     "test": "jest --color",
     "preversion": "npm run clean && npm run build && npm test"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/manferlo81/map-number.git"
-  },
-  "keywords": [
-    "processing",
-    "p5",
-    "p5.js",
-    "map"
-  ],
-  "author": "",
-  "bugs": {
-    "url": "https://github.com/manferlo81/map-number/issues"
-  },
-  "homepage": "https://github.com/manferlo81/map-number#readme",
   "devDependencies": {
     "@types/jest": "^24.0.13",
     "bundlib": "^0.2.5",
@@ -43,7 +34,19 @@
   "files": [
     "dist",
     "types",
-    "scr"
+    "src"
   ],
+  "author": {
+    "name": "Manolin",
+    "email": "manferlo81@gmail.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/manferlo81/map-number.git"
+  },
+  "bugs": {
+    "url": "https://github.com/manferlo81/map-number/issues"
+  },
+  "homepage": "https://github.com/manferlo81/map-number#readme",
   "license": "MIT"
 }
