@@ -5,7 +5,7 @@
 
 # 1.0.1
 
-* fixed [#1](issues/1)
+* fixed [#1](https://github.com/manferlo81/map-number/issues/1)
 * refactoring
 
 # 1.0.0
