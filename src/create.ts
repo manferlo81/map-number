@@ -1,7 +1,7 @@
-type MapFunction = (num: number, min: number, max: number, outMin: number, outMax: number) => number;
+type MapFunction = (num: number, inMin: number, inMax: number, outMin: number, outMax: number) => number;
 
-function create(func: MapFunction, min: number, max: number, outMin: number, outMax: number) {
-  return (num: number) => func(num, min, max, outMin, outMax);
+function create(func: MapFunction, inMin: number, inMax: number, outMin: number, outMax: number) {
+  return (num: number) => func(num, inMin, inMax, outMin, outMax);
 }
 
 export default create;
