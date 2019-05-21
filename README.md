@@ -1,5 +1,7 @@
 # map-number
 
+[![CircleCI](https://circleci.com/gh/manferlo81/map-number.svg?style=svg)](https://circleci.com/gh/manferlo81/map-number)
+
 processing/p5.js map like function, including floating point numbers
 
 > :warning: this `map` function has nothing to do with `Array.prototype.map` method.
