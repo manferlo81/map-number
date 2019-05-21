@@ -24,8 +24,10 @@ npm install map-number
 
 *maps a number in a range to a different range, returning a floting point number, including number outside the given output range.*
 
+> *all other map functions are variants of this one and depend on it.*
+
 ```typescript
-function map(num: number, min: number, max: number, outMin: number, outMax: number): number;
+function map(num: number, inMin: number, inMax: number, outMin: number, outMax: number): number;
 ```
 
 #### floor
@@ -33,7 +35,7 @@ function map(num: number, min: number, max: number, outMin: number, outMax: numb
 *maps a number in a range to a different range, returning a number truncated to the inmediate previous integer number, including number outside the given output range.*
 
 ```typescript
-function floor(num: number, min: number, max: number, outMin: number, outMax: number): number;
+function floor(num: number, inMin: number, inMax: number, outMin: number, outMax: number): number;
 ```
 
 #### round
@@ -41,7 +43,7 @@ function floor(num: number, min: number, max: number, outMin: number, outMax: nu
 *maps a number in a range to a different range, returning a number rounded to the closest integer number, including number outside the given output range.*
 
 ```typescript
-function round(num: number, min: number, max: number, outMin: number, outMax: number): number;
+function round(num: number, inMin: number, inMax: number, outMin: number, outMax: number): number;
 ```
 
 #### limit
@@ -49,7 +51,7 @@ function round(num: number, min: number, max: number, outMin: number, outMax: nu
 *maps a number in a range to a different range, returning a floting point number, limiting the result to the given output range.*
 
 ```typescript
-function limit(num: number, min: number, max: number, outMin: number, outMax: number): number;
+function limit(num: number, inMin: number, inMax: number, outMin: number, outMax: number): number;
 ```
 
 #### create
@@ -57,7 +59,7 @@ function limit(num: number, min: number, max: number, outMin: number, outMax: nu
 *creates a single argument function implementing the given [`map`](#map), [`floor`](#floor), [`round`](#round) or [`limit`](#limit) function, useful when you need to map values multiple times with the same arguments, [see example](#example)*
 
 ```typescript
-function create(func: MapFunction, min: number, max: number, outMin: number, outMax: number): (num: number) => number;
+function create(func: MapFunction, inMin: number, inMax: number, outMin: number, outMax: number): (num: number) => number;
 ```
 
 ###### example
