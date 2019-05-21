@@ -28,6 +28,16 @@ describe("limit method", () => {
 
   });
 
+  test("should invert output", () => {
+
+    expect(
+      limit(3.1, 1, 9, 9, 1)
+    ).toBeCloseTo(
+      6.9
+    );
+
+  });
+
   test("should return non integer output", () => {
 
     expect(

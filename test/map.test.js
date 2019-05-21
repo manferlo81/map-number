@@ -28,6 +28,26 @@ describe("map method", () => {
 
   });
 
+  test("should invert in-range output", () => {
+
+    expect(
+      map(3, 1, 9, 9, 1)
+    ).toBeCloseTo(
+      7
+    );
+
+  });
+
+  test("should invert out-range output", () => {
+
+    expect(
+      map(0, 1, 9, 9, 1)
+    ).toBeCloseTo(
+      10
+    );
+
+  });
+
   test("should return non integer output", () => {
 
     expect(

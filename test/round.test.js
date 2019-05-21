@@ -28,4 +28,24 @@ describe("round method", () => {
 
   });
 
+  test("should invert in-range output", () => {
+
+    expect(
+      round(3.1, 1, 9, 9, 1)
+    ).toBe(
+      7
+    );
+
+  });
+
+  test("should invert out-range output", () => {
+
+    expect(
+      round(-1.7, 1, 9, 9, 1)
+    ).toBe(
+      12
+    );
+
+  });
+
 });

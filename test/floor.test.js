@@ -28,4 +28,24 @@ describe("floor method", () => {
 
   });
 
+  test("should invert in-range output", () => {
+
+    expect(
+      floor(3.1, 1, 9, 9, 1)
+    ).toBe(
+      6
+    );
+
+  });
+
+  test("should invert out-range output", () => {
+
+    expect(
+      floor(-1.3, 1, 9, 9, 1)
+    ).toBe(
+      11
+    );
+
+  });
+
 });
