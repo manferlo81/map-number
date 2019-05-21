@@ -2,41 +2,20 @@ const { create, map } = require("..");
 
 describe("create method", () => {
 
-  const myMap = create(map, 2, 5, 20, 50);
+  test("should return the correct output", () => {
 
-  test("should return in-range output", () => {
+    const boundaries = [2, 5, 20, 50];
+    const myMap = create(map, ...boundaries);
 
-    expect(
-      myMap(3.3)
-    ).toBeCloseTo(
-      33
-    );
+    const nums = [3.3, 0.01, 10];
 
-  });
-
-  test("should return out-range output", () => {
-
-    expect(
-      myMap(6.1)
-    ).toBeCloseTo(
-      61
-    );
-
-    expect(
-      myMap(1.7)
-    ).toBeCloseTo(
-      17
-    );
-
-  });
-
-  test("should return non integer output", () => {
-
-    expect(
-      myMap(0.331)
-    ).toBeCloseTo(
-      3.31
-    );
+    nums.forEach((num) => {
+      expect(
+        myMap(num)
+      ).toBe(
+        map(num, ...boundaries)
+      );
+    });
 
   });
 
