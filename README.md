@@ -1,5 +1,7 @@
 # map-number
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/manferlo81/map-number.svg)](https://greenkeeper.io/)
+
 processing/p5.js map like function, including floating point numbers
 
 > :warning: this `map` function has nothing to do with `Array.prototype.map` method.
