@@ -1,2 +1,2 @@
-export const min = Math.min;
-export const max = Math.max;
+const { min, max } = Math;
+export { min, max };
