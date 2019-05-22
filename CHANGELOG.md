@@ -1,6 +1,7 @@
 # next
 
 * improved documentation
+* source code refactoring
 
 # 1.0.2
 
