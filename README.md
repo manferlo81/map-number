@@ -2,7 +2,7 @@
 
 [![CircleCI](https://circleci.com/gh/manferlo81/map-number.svg?style=svg)](https://circleci.com/gh/manferlo81/map-number) [![Greenkeeper badge](https://badges.greenkeeper.io/manferlo81/map-number.svg)](https://greenkeeper.io/) [![npm](https://img.shields.io/npm/v/map-number.svg)](https://www.npmjs.com/package/map-number) [![devDependencies Status](https://david-dm.org/manferlo81/map-number/dev-status.svg)](https://david-dm.org/manferlo81/map-number?type=dev) [![npm bundle size](https://img.shields.io/bundlephobia/min/map-number.svg)](https://bundlephobia.com/result?p=map-number) [![codecov](https://codecov.io/gh/manferlo81/map-number/branch/master/graph/badge.svg)](https://codecov.io/gh/manferlo81/map-number) [![GitHub](https://img.shields.io/github/license/manferlo81/map-number.svg)](LICENSE)
 
-processing/p5.js map like function, including floating point numbers
+[processing](https://processing.org/reference/map_.html)/[p5.js](http://p5js.org/reference/#/p5/map) map like function, including floating point numbers
 
 > :warning: this `map` function has nothing to do with `Array.prototype.map` method.
 
