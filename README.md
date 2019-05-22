@@ -26,7 +26,9 @@ npm install map-number
 
 *maps a number in a range to a different range, returning a floting point number, including number outside the given output range.*
 
-> *all other map functions are variants of this one and depend on it.*
+> *all other map function variants depend on this one.*
+
+###### syntax
 
 ```typescript
 function map(num: number, inMin: number, inMax: number, outMin: number, outMax: number): number;
@@ -36,6 +38,8 @@ function map(num: number, inMin: number, inMax: number, outMin: number, outMax: 
 
 *maps a number in a range to a different range, returning a number truncated to the inmediate previous integer number, including number outside the given output range.*
 
+###### syntax
+
 ```typescript
 function floor(num: number, inMin: number, inMax: number, outMin: number, outMax: number): number;
 ```
@@ -43,6 +47,8 @@ function floor(num: number, inMin: number, inMax: number, outMin: number, outMax
 #### round
 
 *maps a number in a range to a different range, returning a number rounded to the closest integer number, including number outside the given output range.*
+
+###### syntax
 
 ```typescript
 function round(num: number, inMin: number, inMax: number, outMin: number, outMax: number): number;
@@ -52,13 +58,17 @@ function round(num: number, inMin: number, inMax: number, outMin: number, outMax
 
 *maps a number in a range to a different range, returning a floting point number, limiting the result to the given output range.*
 
+###### syntax
+
 ```typescript
 function limit(num: number, inMin: number, inMax: number, outMin: number, outMax: number): number;
 ```
 
 #### create
 
-*creates a single argument function implementing the given [`map`](#map), [`floor`](#floor), [`round`](#round) or [`limit`](#limit) function, useful when you need to map values multiple times with the same arguments, [see example](#example)*
+*creates a single argument function implementing the given [`map`](#map), [`floor`](#floor), [`round`](#round) or [`limit`](#limit) function, useful when you need to map values multiple times within the same range, [see example](#example)*
+
+###### syntax
 
 ```typescript
 function create(func: MapFunction, inMin: number, inMax: number, outMin: number, outMax: number): (num: number) => number;

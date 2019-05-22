@@ -1,3 +1,7 @@
+# next
+
+* improved documentation
+
 # 1.0.2
 
 * added circleci & greenkeeper
