@@ -14,7 +14,10 @@
     "processing",
     "p5",
     "p5.js",
-    "map"
+    "map",
+    "floor",
+    "round",
+    "limit"
   ],
   "scripts": {
     "clean": "rm -rf dist types coverage",

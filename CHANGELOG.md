@@ -1,3 +1,7 @@
+# 1.0.4
+
+* added new keywords
+
 # 1.0.3
 
 * improved documentation
