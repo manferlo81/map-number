@@ -1,4 +1,4 @@
-# next
+# 1.0.3
 
 * improved documentation
 * source code refactoring
