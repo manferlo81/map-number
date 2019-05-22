@@ -6,18 +6,27 @@
 
 > :warning: this `map` function has nothing to do with `Array.prototype.map` method.
 
-## Install
+## Usage
 
-#### npm
+#### Node.js
 
 ```bash
-npm install map-number
+> npm install map-number
 ```
 
-#### jsDelivr
+```javascript
+const { map } = require("map-number");
+const y = map(Math.sin(angle), -1, 1, 100, 0);
+```
+
+#### Browser
 
 ```html
 <script src="https://cdn.jsdelivr.net/npm/map-number/dist/map.umd.min.js"></script>
+```
+
+```javascript
+const y = mapNum.map(Math.sin(angle), -1, 1, 100, 0);
 ```
 
 ## API
@@ -77,10 +86,10 @@ function create(func: MapFunction, inMin: number, inMax: number, outMin: number,
 ###### example
 
 ```javascript
-const myMap = create(map, -1, 1, 0, 10);
-myMap(0.5);
+const myMap = create(map, -1, 1, 100, 0);
+myMap(Math.sin(angle));
 // ... is equivalent to...
-map(0.5, -1, 1, 0, 10);
+map(Math.sin(angle), -1, 1, 100, 0);
 ```
 
 #### wrap

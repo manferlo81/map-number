@@ -2,6 +2,7 @@
 
 * added new keywords
 * added wrap alias for create method
+* corrected umd export name
 
 # 1.0.3
 
