@@ -1,3 +1,8 @@
+# 1.0.5
+
+* added snyk badge
+* added david dependencies badge
+
 # 1.0.4
 
 * added new keywords
