@@ -1,6 +1,7 @@
 # 1.0.4
 
 * added new keywords
+* added wrap alias for create method
 
 # 1.0.3
 

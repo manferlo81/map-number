@@ -83,6 +83,10 @@ myMap(0.5);
 map(0.5, -1, 1, 0, 10);
 ```
 
+#### wrap
+
+*an alias for [create](#create) method*
+
 ## License
 
 [MIT License](LICENSE)
