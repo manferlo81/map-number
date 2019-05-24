@@ -98,4 +98,4 @@ map(Math.sin(angle), -1, 1, 100, 0);
 
 ## License
 
-[MIT](LICENSE) :copyright: Manuel Fernández
+[MIT](LICENSE) &copy; Manuel Fernández
