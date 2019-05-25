@@ -1,6 +1,8 @@
 # 1.0.8
 
+* improved documentation
 * added package keywords
+* added jsDelivr badge
 
 # 1.0.7
 
