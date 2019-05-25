@@ -1,3 +1,7 @@
+# 1.0.8
+
+* added package keywords
+
 # 1.0.7
 
 * dependencies updated

@@ -16,7 +16,9 @@
     "map",
     "floor",
     "round",
-    "limit"
+    "limit",
+    "number",
+    "numbers"
   ],
   "scripts": {
     "clean": "rm -rf dist types coverage",
