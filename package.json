@@ -8,6 +8,7 @@
   "bundlib": {
     "name": "mapNum"
   },
+  "types": "types/index.d.ts",
   "typings": "types/index.d.ts",
   "keywords": [
     "processing",
