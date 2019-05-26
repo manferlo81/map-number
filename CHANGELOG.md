@@ -1,3 +1,7 @@
+# 1.0.11
+
+* added types badge
+
 # 1.0.10
 
 * added test for alias
