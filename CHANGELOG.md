@@ -1,3 +1,7 @@
+# 1.0.9
+
+* implemented own min & max function
+
 # 1.0.8
 
 * improved documentation
