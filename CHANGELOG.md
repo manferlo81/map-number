@@ -1,3 +1,7 @@
+# 1.0.10
+
+* added test for alias
+
 # 1.0.9
 
 * implemented own min & max function
