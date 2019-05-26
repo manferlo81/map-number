@@ -5,10 +5,10 @@
   "main": "dist/map.cjs.js",
   "module": "dist/map.es.js",
   "browser": "dist/map.umd.js",
-  "typings": "types/index.d.ts",
   "bundlib": {
     "name": "mapNum"
   },
+  "typings": "types/index.d.ts",
   "keywords": [
     "processing",
     "p5",
@@ -42,7 +42,7 @@
     "src"
   ],
   "author": {
-    "name": "Manolin",
+    "name": "Manuel Fernández",
     "email": "manferlo81@gmail.com"
   },
   "repository": {
