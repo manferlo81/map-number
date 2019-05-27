@@ -1,3 +1,8 @@
+# 1.0.12
+
+* dependencies updated
+* installed typescript & tslint locally
+
 # 1.0.11
 
 * added types badge
