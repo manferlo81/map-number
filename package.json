@@ -35,7 +35,8 @@
     "bundlib": "^0.3.0",
     "eslint": "^5.16.0",
     "jest": "^24.8.0",
-    "tslint": "^5.16.0"
+    "tslint": "^5.16.0",
+    "typescript": "^3.4.5"
   },
   "files": [
     "dist",
