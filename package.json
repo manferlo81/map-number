@@ -22,7 +22,7 @@
     "numbers"
   ],
   "scripts": {
-    "clean": "rm -rf dist types coverage",
+    "clean": "rm -rf .cache dist types coverage",
     "lint": "tslint src/**",
     "dev": "bundlib -dw",
     "build": "npm run lint && bundlib -d",
