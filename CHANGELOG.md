@@ -1,5 +1,6 @@
-# 1.0.14
+# 1.1.0
 
+* added ceil method
 * fixed typo on readme
 * improved documentation
 
