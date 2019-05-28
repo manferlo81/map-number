@@ -1,15 +1,18 @@
-const CI = process.env.CI;
+const { main } = require("./package.json");
 
+const CI = process.env.CI;
 const threshold = 95;
 
 module.exports = {
 
   testEnvironment: "node",
+  browser: false,
+
   cacheDirectory: ".cache/jest",
 
   collectCoverage: true,
   collectCoverageFrom: [
-    "dist/**"
+    main
   ],
   coverageDirectory: "coverage",
   coverageReporters: [
