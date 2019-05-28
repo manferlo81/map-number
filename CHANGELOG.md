@@ -1,5 +1,6 @@
 # 1.0.13
 
+* added install size badge
 * improved documentation
 
 # 1.0.12
