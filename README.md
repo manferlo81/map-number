@@ -71,12 +71,22 @@ function map(num: number, inMin: number, inMax: number, outMin: number, outMax: 
 
 ### floor
 
-*Maps a number in a range to a different range, returning a number rounded down to the previous integer number, it may include number outside the given output range.*
+*Maps a number in a range to a different range, returning a number rounded **down** to the previous integer number, it may include number outside the given output range.*
 
 ###### syntax
 
 ```typescript
 function floor(num: number, inMin: number, inMax: number, outMin: number, outMax: number): number;
+```
+
+### ceil
+
+*Maps a number in a range to a different range, returning a number rounded **up** to the next integer number, it may include number outside the given output range.*
+
+###### syntax
+
+```typescript
+function ceil(num: number, inMin: number, inMax: number, outMin: number, outMax: number): number;
 ```
 
 ### round
@@ -101,7 +111,7 @@ function limit(num: number, inMin: number, inMax: number, outMin: number, outMax
 
 ### create
 
-*creates a single argument function implementing the given [`map`](#map), [`floor`](#floor), [`round`](#round) or [`limit`](#limit) function, useful when you need to map values multiple times within the same range, [see example](#example)*
+*creates a single argument function implementing the given [`map`](#map), [`floor`](#floor), [`ceil`](#ceil), [`round`](#round) or [`limit`](#limit) function, useful when you need to map values multiple times within the same range, [see example](#example)*
 
 ###### syntax
 
