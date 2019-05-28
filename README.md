@@ -112,10 +112,17 @@ function create(func: MapFunction, inMin: number, inMax: number, outMin: number,
 ###### example
 
 ```javascript
+import { map, create } from "map-number";
+
 const myMap = create(map, -1, 1, 100, 0);
-myMap(Math.sin(angle));
+
+myMap(Math.sin(angle1));
+myMap(Math.sin(angle2));
+
 // ... is equivalent to...
-map(Math.sin(angle), -1, 1, 100, 0);
+
+map(Math.sin(angle1), -1, 1, 100, 0);
+map(Math.sin(angle2), -1, 1, 100, 0);
 ```
 
 ### wrap
