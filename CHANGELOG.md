@@ -1,3 +1,7 @@
+# 1.0.13
+
+* improved documentation
+
 # 1.0.12
 
 * dependencies updated
