@@ -1,22 +1,23 @@
 # 1.1.0
 
-* added ceil method
-* fixed typo on readme
+* added `ceil` method
+* fixed: typo on readme
 * improved documentation
+* changelog makeover
 
 # 1.0.13
 
-* added install size badge
+* added badge: `install size`
 * improved documentation
 
 # 1.0.12
 
 * dependencies updated
-* installed typescript & tslint locally
+* installed `typescript` & `tslint` locally
 
 # 1.0.11
 
-* added types badge
+* added badge: `types`
 
 # 1.0.10
 
@@ -24,13 +25,13 @@
 
 # 1.0.9
 
-* implemented own min & max function
+* implemented own `min` & `max` function
 
 # 1.0.8
 
 * improved documentation
 * added package keywords
-* added jsDelivr badge
+* added badge: `jsDelivr`
 
 # 1.0.7
 
@@ -42,8 +43,8 @@
 
 # 1.0.5
 
-* added snyk badge
-* added david dependencies badge
+* added badge: `snyk`
+* added badge: `david dependencies`
 
 # 1.0.4
 
@@ -58,7 +59,7 @@
 
 # 1.0.2
 
-* added circleci & greenkeeper
+* added `circleci` & `greenkeeper`
 * updated readme
 
 # 1.0.1
