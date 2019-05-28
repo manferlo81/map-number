@@ -1,3 +1,7 @@
+# 1.1.1
+
+* improved documentation
+
 # 1.1.0
 
 * added `ceil` method

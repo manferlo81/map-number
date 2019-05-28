@@ -49,7 +49,7 @@ const y = mapNum.map(Math.sin(angle), -1, 1, 100, 0);
 
 ### Browser
 
-*after the* `script` *tag has been added,* `mapNum` *will be available globally.*
+*After the* `script` *tag has been added,* `mapNum` *will be available globally.*
 
 ```javascript
 const y = mapNum.map(Math.sin(angle), -1, 1, 100, 0);
@@ -111,7 +111,7 @@ function limit(num: number, inMin: number, inMax: number, outMin: number, outMax
 
 ### create
 
-*creates a single argument function implementing the given [`map`](#map), [`floor`](#floor), [`ceil`](#ceil), [`round`](#round) or [`limit`](#limit) function, useful when you need to map values multiple times within the same range, [see example](#example)*
+*Creates a single argument function implementing the given [`map`](#map), [`floor`](#floor), [`ceil`](#ceil), [`round`](#round) or [`limit`](#limit) function. Useful when you need to map values multiple times within the same range, [see example](#example).*
 
 ###### syntax
 
@@ -137,7 +137,7 @@ map(Math.sin(angle2), -1, 1, 100, 0);
 
 ### wrap
 
-*an alias for [create](#create) method*
+*An alias for [create](#create) method.*
 
 ## License
 
