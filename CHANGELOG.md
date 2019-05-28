@@ -1,3 +1,8 @@
+# 1.0.14
+
+* fixed typo on readme
+* improved documentation
+
 # 1.0.13
 
 * added install size badge
