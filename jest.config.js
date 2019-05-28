@@ -1,5 +1,7 @@
 const CI = process.env.CI;
 
+const threshold = 95;
+
 module.exports = {
 
   testEnvironment: "node",
@@ -15,7 +17,14 @@ module.exports = {
     "text",
     "text-summary"
   ],
-  coverageThreshold: null,
+  coverageThreshold: {
+    global: {
+      branches: threshold,
+      functions: threshold,
+      lines: threshold,
+      statements: threshold
+    }
+  },
 
   verbose: true,
 
