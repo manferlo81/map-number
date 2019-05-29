@@ -59,9 +59,9 @@ const y = mapNum.map(Math.sin(angle), -1, 1, 100, 0);
 
 ### map
 
-*Maps a number in a range to a different range, returning a floting point number, it may include number outside the given output range.*
+*Maps a number in a range to a different range, returning a floting point number. The result is not limited to the the given output range.*
 
-> *This is the core function and all other map function variants depend on this it.*
+> *This is the core function and all other map function variants depend on it.*
 
 ###### syntax
 
@@ -71,7 +71,7 @@ function map(num: number, inMin: number, inMax: number, outMin: number, outMax: 
 
 ### floor
 
-*Maps a number in a range to a different range, returning a number rounded **down** to the previous integer number, it may include number outside the given output range.*
+*Maps a number in a range to a different range, returning a number rounded **down** to the **previous** integer number. The result is not limited to the the given output range.*
 
 ###### syntax
 
@@ -81,7 +81,7 @@ function floor(num: number, inMin: number, inMax: number, outMin: number, outMax
 
 ### ceil
 
-*Maps a number in a range to a different range, returning a number rounded **up** to the next integer number, it may include number outside the given output range.*
+*Maps a number in a range to a different range, returning a number rounded **up** to the **next** integer number. The result is not blimitedto the the given output range.*
 
 ###### syntax
 
@@ -91,7 +91,7 @@ function ceil(num: number, inMin: number, inMax: number, outMin: number, outMax:
 
 ### round
 
-*Maps a number in a range to a different range, returning a number rounded to the closest integer number, it may include number outside the given output range.*
+*Maps a number in a range to a different range, returning a number **rounded** to the **closest** integer number. The result is not blimitedto the the given output range.*
 
 ###### syntax
 
@@ -101,7 +101,7 @@ function round(num: number, inMin: number, inMax: number, outMin: number, outMax
 
 ### limit
 
-*Maps a number in a range to a different range, returning a floting point number, the result will bounded to the given output range.*
+*Maps a number in a range to a different range, returning a floting point number. The result will be bounded to the given output range.*
 
 ###### syntax
 
