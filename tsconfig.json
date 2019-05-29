@@ -3,10 +3,12 @@
     "target": "es2017",
     "module": "es2015",
     "moduleResolution": "node",
+    "esModuleInterop": true,
+    "lib": [],
     "strict": true,
     "noImplicitAny": true,
     "noImplicitThis": true,
     "noImplicitReturns": true,
-    "esModuleInterop": true,
+    "noUnusedLocals": true
   }
 }
