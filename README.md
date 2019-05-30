@@ -19,24 +19,24 @@ npm i map-number
 *[www.jsdelivr.com](https://www.jsdelivr.com)*
 
 ```html
-<script src="https://cdn.jsdelivr.net/npm/map-number/dist/map.umd.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/map-number@latest/dist/map.umd.js"></script>
 ```
 
 ##### for production
 
 ```html
-<script src="https://cdn.jsdelivr.net/npm/map-number/dist/map.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/map-number@latest/dist/map.umd.min.js"></script>
 ```
 
-*[more options...](https://www.jsdelivr.com/package/npm/map-number)*
+*[more options...](https://www.jsdelivr.com/package/npm/map-number?version=latest)*
 
 #### unpkg
 
 ```html
-<script src="https://unpkg.com/map-number/dist/map.umd.js"></script>
+<script src="https://unpkg.com/map-number@latest/dist/map.umd.js"></script>
 ```
 
-*[more options...](https://unpkg.com/map-number/)*
+*[more options...](https://unpkg.com/map-number@latest/)*
 
 ## Usage
 

@@ -1,3 +1,7 @@
+# 1.1.3 (31-05-2019)
+
+* fixed cdn links for latest version
+
 # 1.1.2 (30-05-2019)
 
 * build minified `umd` module
