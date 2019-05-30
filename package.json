@@ -6,7 +6,10 @@
   "module": "dist/map.es.js",
   "browser": "dist/map.umd.js",
   "bundlib": {
-    "name": "mapNum"
+    "name": "mapNum",
+    "min": [
+      "browser"
+    ]
   },
   "types": "types/index.d.ts",
   "typings": "types/index.d.ts",
