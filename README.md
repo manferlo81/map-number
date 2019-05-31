@@ -30,10 +30,18 @@ npm i map-number
 
 *[more options...](https://www.jsdelivr.com/package/npm/map-number?version=latest)*
 
-#### unpkg
+### unpkg
+
+*[unpkg.com](https://unpkg.com)*
 
 ```html
 <script src="https://unpkg.com/map-number@latest/dist/map.umd.js"></script>
+```
+
+##### for production
+
+```html
+<script src="https://unpkg.com/map-number@latest/dist/map.umd.min.js"></script>
 ```
 
 *[more options...](https://unpkg.com/map-number@latest/)*
