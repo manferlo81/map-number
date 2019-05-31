@@ -7,9 +7,7 @@
   "browser": "dist/map.umd.js",
   "bundlib": {
     "name": "mapNum",
-    "min": [
-      "browser"
-    ]
+    "min": "browser"
   },
   "types": "types/index.d.ts",
   "typings": "types/index.d.ts",
