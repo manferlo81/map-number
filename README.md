@@ -149,4 +149,4 @@ map(Math.sin(angle2), -1, 1, 100, 0);
 
 ## License
 
-[MIT](LICENSE) &copy; Manuel Fernández
+[MIT](LICENSE) &copy; [Manuel Fernández](https://github.com/manferlo81)
