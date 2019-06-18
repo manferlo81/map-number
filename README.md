@@ -134,18 +134,18 @@ import { map, wrap } from "map-number";
 
 const myMap = wrap(map, -1, 1, 100, 0);
 
-myMap(Math.sin(angle1));
-myMap(Math.sin(angle2));
+myMap(-0.2);
+myMap(0.33);
 
 // ... is equivalent to...
 
-map(Math.sin(angle1), -1, 1, 100, 0);
-map(Math.sin(angle2), -1, 1, 100, 0);
+map(-0.2, -1, 1, 100, 0);
+map(0.33, -1, 1, 100, 0);
 ```
 
 ### create
 
-*An alias for [wrap](#wrap) method.*
+*An alias for [wrap](#wrap) method, deprecated in version* `1.2.0`*, use [wrap](#wrap) instead.*
 
 ## License
 

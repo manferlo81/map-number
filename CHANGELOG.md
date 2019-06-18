@@ -1,7 +1,9 @@
 # map-number changelog
 
-## 1.1.7 (18-06-2019)
+## 1.2.0 (18-06-2019)
 
+* create method deprecated
+* wrap as default wrap method
 * dependencies updated
 
 ## 1.1.6 (07-06-2019)
