@@ -4,9 +4,9 @@ const { create, wrap } = require("..");
 
 describe("alias methods", () => {
 
-  test("should export wrap alias", () => {
+  test("should export create alias", () => {
 
-    expect(wrap).toBe(create);
+    expect(create).toBe(wrap);
 
   });
 
