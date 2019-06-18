@@ -117,22 +117,22 @@ function round(num: number, inMin: number, inMax: number, outMin: number, outMax
 function limit(num: number, inMin: number, inMax: number, outMin: number, outMax: number): number;
 ```
 
-### create
+### wrap
 
 *Creates a single argument function implementing the given [`map`](#map), [`floor`](#floor), [`ceil`](#ceil), [`round`](#round) or [`limit`](#limit) function. Useful when you need to map values multiple times within the same range, [see example](#example).*
 
 ###### syntax
 
 ```typescript
-function create(func: MapFunction, inMin: number, inMax: number, outMin: number, outMax: number): (num: number) => number;
+function wrap(func: MapFunction, inMin: number, inMax: number, outMin: number, outMax: number): (num: number) => number;
 ```
 
 ###### example
 
 ```javascript
-import { map, create } from "map-number";
+import { map, wrap } from "map-number";
 
-const myMap = create(map, -1, 1, 100, 0);
+const myMap = wrap(map, -1, 1, 100, 0);
 
 myMap(Math.sin(angle1));
 myMap(Math.sin(angle2));
@@ -143,9 +143,9 @@ map(Math.sin(angle1), -1, 1, 100, 0);
 map(Math.sin(angle2), -1, 1, 100, 0);
 ```
 
-### wrap
+### create
 
-*An alias for [create](#create) method.*
+*An alias for [wrap](#wrap) method.*
 
 ## License
 
