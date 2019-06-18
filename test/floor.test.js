@@ -1,3 +1,5 @@
+// @ts-check
+
 const { floor } = require("..");
 
 describe("floor method", () => {

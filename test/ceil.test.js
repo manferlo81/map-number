@@ -1,3 +1,5 @@
+// @ts-check
+
 const { ceil } = require("..");
 
 describe("ceil method", () => {

@@ -1,3 +1,5 @@
+// @ts-check
+
 const { create, wrap } = require("..");
 
 describe("alias methods", () => {

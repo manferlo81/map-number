@@ -1,3 +1,5 @@
+// @ts-check
+
 const { round } = require("..");
 
 describe("round method", () => {

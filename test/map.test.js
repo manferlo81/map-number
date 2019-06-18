@@ -1,3 +1,5 @@
+// @ts-check
+
 const { map } = require("..");
 
 describe("map method", () => {

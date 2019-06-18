@@ -1,3 +1,5 @@
+// @ts-check
+
 const { limit } = require("..");
 
 describe("limit method", () => {
