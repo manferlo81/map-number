@@ -1,5 +1,9 @@
 # map-number changelog
 
+## 1.2.1 (22-06-2019)
+
+* dependencies updated
+
 ## 1.2.0 (18-06-2019)
 
 * create method deprecated
