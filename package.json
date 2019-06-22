@@ -1,6 +1,6 @@
 {
   "name": "map-number",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "processing/p5.js map like function, including floating point numbers support",
   "main": "dist/map.cjs.js",
   "module": "dist/map.es.js",
