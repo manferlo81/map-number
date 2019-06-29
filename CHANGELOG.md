@@ -1,9 +1,11 @@
 # map-number changelog
 
 ## 1.2.2
-*27-JUN-2019*
+*29-JUN-2019*
 
 * dependencies updated
+* added `husky`
+* `ts-jest` for typescript test
 
 ## 1.2.1
 *22-JUN-2019*
