@@ -1,15 +1,13 @@
-// @ts-check
-
-const { map } = require("..");
+import { map } from "../src";
 
 describe("map method", () => {
 
   test("should return in-range output", () => {
 
     expect(
-      map(3, 2, 5, 20, 26)
+      map(3, 2, 5, 20, 26),
     ).toBeCloseTo(
-      22
+      22,
     );
 
   });
@@ -17,15 +15,15 @@ describe("map method", () => {
   test("should return out-range output", () => {
 
     expect(
-      map(6, 2, 5, 20, 26)
+      map(6, 2, 5, 20, 26),
     ).toBeCloseTo(
-      28
+      28,
     );
 
     expect(
-      map(1, 2, 5, 20, 26)
+      map(1, 2, 5, 20, 26),
     ).toBeCloseTo(
-      18
+      18,
     );
 
   });
@@ -33,9 +31,9 @@ describe("map method", () => {
   test("should invert in-range output", () => {
 
     expect(
-      map(3, 1, 9, 9, 1)
+      map(3, 1, 9, 9, 1),
     ).toBeCloseTo(
-      7
+      7,
     );
 
   });
@@ -43,9 +41,9 @@ describe("map method", () => {
   test("should invert out-range output", () => {
 
     expect(
-      map(0, 1, 9, 9, 1)
+      map(0, 1, 9, 9, 1),
     ).toBeCloseTo(
-      10
+      10,
     );
 
   });
@@ -53,9 +51,9 @@ describe("map method", () => {
   test("should return non integer output", () => {
 
     expect(
-      map(33.1, 10, 90, 1, 9)
+      map(33.1, 10, 90, 1, 9),
     ).toBeCloseTo(
-      3.31
+      3.31,
     );
 
   });

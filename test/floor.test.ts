@@ -1,15 +1,13 @@
-// @ts-check
-
-const { floor } = require("..");
+import { floor } from "../src";
 
 describe("floor method", () => {
 
   test("should return in-range output", () => {
 
     expect(
-      floor(23, 20, 50, 2, 5)
+      floor(23, 20, 50, 2, 5),
     ).toBe(
-      2
+      2,
     );
 
   });
@@ -17,15 +15,15 @@ describe("floor method", () => {
   test("should return out-range output", () => {
 
     expect(
-      floor(6, 20, 50, 2, 5)
+      floor(6, 20, 50, 2, 5),
     ).toBe(
-      0
+      0,
     );
 
     expect(
-      floor(62, 20, 50, 2, 5)
+      floor(62, 20, 50, 2, 5),
     ).toBe(
-      6
+      6,
     );
 
   });
@@ -33,9 +31,9 @@ describe("floor method", () => {
   test("should invert in-range output", () => {
 
     expect(
-      floor(3.1, 1, 9, 9, 1)
+      floor(3.1, 1, 9, 9, 1),
     ).toBe(
-      6
+      6,
     );
 
   });
@@ -43,9 +41,9 @@ describe("floor method", () => {
   test("should invert out-range output", () => {
 
     expect(
-      floor(-1.3, 1, 9, 9, 1)
+      floor(-1.3, 1, 9, 9, 1),
     ).toBe(
-      11
+      11,
     );
 
   });

@@ -1,15 +1,13 @@
-// @ts-check
+import { ceil } from "../src";
 
-const { round } = require("..");
-
-describe("round method", () => {
+describe("ceil method", () => {
 
   test("should return in-range output", () => {
 
     expect(
-      round(23, 20, 50, 2, 5)
+      ceil(23, 20, 50, 2, 5),
     ).toBe(
-      2
+      3,
     );
 
   });
@@ -17,15 +15,15 @@ describe("round method", () => {
   test("should return out-range output", () => {
 
     expect(
-      round(6, 20, 50, 2, 5)
+      ceil(6, 20, 50, 2, 5),
     ).toBe(
-      1
+      1,
     );
 
     expect(
-      round(62, 20, 50, 2, 5)
+      ceil(62, 20, 50, 2, 5),
     ).toBe(
-      6
+      7,
     );
 
   });
@@ -33,9 +31,9 @@ describe("round method", () => {
   test("should invert in-range output", () => {
 
     expect(
-      round(3.1, 1, 9, 9, 1)
+      ceil(3.1, 1, 9, 9, 1),
     ).toBe(
-      7
+      7,
     );
 
   });
@@ -43,9 +41,9 @@ describe("round method", () => {
   test("should invert out-range output", () => {
 
     expect(
-      round(-1.7, 1, 9, 9, 1)
+      ceil(-1.3, 1, 9, 9, 1),
     ).toBe(
-      12
+      12,
     );
 
   });

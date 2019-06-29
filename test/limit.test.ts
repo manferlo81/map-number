@@ -1,15 +1,13 @@
-// @ts-check
-
-const { limit } = require("..");
+import { limit } from "../src";
 
 describe("limit method", () => {
 
   test("should return in-range output", () => {
 
     expect(
-      limit(3.3, 2, 5, 20, 50)
+      limit(3.3, 2, 5, 20, 50),
     ).toBeCloseTo(
-      33
+      33,
     );
 
   });
@@ -17,15 +15,15 @@ describe("limit method", () => {
   test("should limit output", () => {
 
     expect(
-      limit(1, 2, 5, 20, 50)
+      limit(1, 2, 5, 20, 50),
     ).toBeCloseTo(
-      20
+      20,
     );
 
     expect(
-      limit(6, 2, 5, 20, 50)
+      limit(6, 2, 5, 20, 50),
     ).toBeCloseTo(
-      50
+      50,
     );
 
   });
@@ -33,9 +31,9 @@ describe("limit method", () => {
   test("should invert output", () => {
 
     expect(
-      limit(3.1, 1, 9, 9, 1)
+      limit(3.1, 1, 9, 9, 1),
     ).toBeCloseTo(
-      6.9
+      6.9,
     );
 
   });
@@ -43,9 +41,9 @@ describe("limit method", () => {
   test("should return non integer output", () => {
 
     expect(
-      limit(33.1, 10, 90, 1, 9)
+      limit(33.1, 10, 90, 1, 9),
     ).toBeCloseTo(
-      3.31
+      3.31,
     );
 
   });
