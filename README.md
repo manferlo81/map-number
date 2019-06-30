@@ -16,8 +16,6 @@ npm i map-number
 
 ### jsDelivr
 
-*[www.jsdelivr.com](https://www.jsdelivr.com)*
-
 ```html
 <script src="https://cdn.jsdelivr.net/npm/map-number@latest/dist/map.umd.js"></script>
 ```
@@ -31,8 +29,6 @@ npm i map-number
 *[more options...](https://www.jsdelivr.com/package/npm/map-number?version=latest)*
 
 ### unpkg
-
-*[unpkg.com](https://unpkg.com)*
 
 ```html
 <script src="https://unpkg.com/map-number@latest/dist/map.umd.js"></script>
