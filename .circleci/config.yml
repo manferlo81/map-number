@@ -29,13 +29,13 @@ jobs:
       - checkout
       - restore_cache:
           keys:
-            - v1-deps-map-number-{{ checksum "package-lock.json" }}
+            - v1-deps-map-number-{{ checksum "package.json" }}
             - v1-deps-map-number-
       - run:
           name: Install Dependencies
           command: npm install
       - save_cache:
-          key: v1-deps-map-number-{{ checksum "package-lock.json" }}
+          key: v1-deps-map-number-{{ checksum "package.json" }}
           paths:
             - node_modules
       - run:
