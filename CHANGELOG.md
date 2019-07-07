@@ -1,5 +1,11 @@
 # map-number changelog
 
+## 1.2.3
+
+***07-JUL-2019***
+
+* dependencies updated
+
 ## 1.2.2
 
 ***01-JUL-2019***
