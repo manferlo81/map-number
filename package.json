@@ -28,11 +28,11 @@
     "dev": "bundlib -dw",
     "build": "npm run lint && bundlib -d",
     "test": "jest --color -w 3",
-    "preversion": "npm run clean && npm run build && npm test"
+    "preversion": "npm run clean && npm test && npm run build"
   },
   "husky": {
     "hooks": {
-      "pre-push": "npm run build && npm test"
+      "pre-push": "npm test"
     }
   },
   "devDependencies": {
