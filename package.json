@@ -26,9 +26,9 @@
     "clean": "rm -rf node_modules/.cache/bundlib node_modules/.cache/jest dist types coverage",
     "lint": "tslint src/**/*.ts",
     "dev": "bundlib -dw",
-    "build": "npm run lint && bundlib -d",
+    "build": "bundlib -d",
     "test": "jest --color -w 3",
-    "preversion": "npm run clean && npm test && npm run build"
+    "preversion": "npm run clean && npm test && npm run lint && npm run build"
   },
   "devDependencies": {
     "@types/jest": "^24.0.18",
