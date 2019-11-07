@@ -2,6 +2,19 @@
 
 ## Changes
 
+### [1.2.6](https://github.com/manferlo81/map-number/compare/v1.2.5...v1.2.6) (2019-11-07)
+
+
+### Other Changes
+
+* setup standard-version ([278038a](https://github.com/manferlo81/map-number/commit/278038aebaf167d1f45a681128e5f55da40e2a40))
+* switched from tslint to [@typescript-eslint](https://github.com/typescript-eslint) ([11912a6](https://github.com/manferlo81/map-number/commit/11912a6ff2247d8067c4b78ebbe652081bf7d673))
+* **deps-dev:** Bump @types/jest from 24.0.21 to 24.0.22 ([#65](https://github.com/manferlo81/map-number/issues/65)) ([95d61a9](https://github.com/manferlo81/map-number/commit/95d61a9d8275808efdfa717ad34895052be121c8))
+* **deps-dev:** bump @types/node from 12.12.5 to 12.12.6 ([#64](https://github.com/manferlo81/map-number/issues/64)) ([4c39728](https://github.com/manferlo81/map-number/commit/4c3972891d1519bdb32f3c939949f16f0f7e6831))
+* **deps-dev:** bump bundlib from 0.13.0 to 0.13.1 ([#66](https://github.com/manferlo81/map-number/issues/66)) ([5f6943d](https://github.com/manferlo81/map-number/commit/5f6943d46eb3deb9021424c3ce1ff1e317e7f83e))
+* **deps-dev:** Bump typescript from 3.6.4 to 3.7.2 ([#62](https://github.com/manferlo81/map-number/issues/62)) ([c3ad17e](https://github.com/manferlo81/map-number/commit/c3ad17ec0cf8ff927e046f17d685c35ac63ea092))
+* edited badges ([99b8f03](https://github.com/manferlo81/map-number/commit/99b8f03661f98b2b294dab84e9178931772dcc1f))
+
 ### [1.2.5](https://github.com/manferlo81/map-number/compare/v1.2.4...v1.2.5) (2019-09-14)
 
 * dependencies updated
