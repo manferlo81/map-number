@@ -1,5 +1,5 @@
-import map from "./map";
-import { max, min } from "./math";
+import map from './map'
+import { max, min } from './math'
 
 function limit(num: number, inMin: number, inMax: number, outMin: number, outMax: number) {
   return max(
@@ -14,7 +14,7 @@ function limit(num: number, inMin: number, inMax: number, outMin: number, outMax
       ),
       map(num, inMin, inMax, outMin, outMax),
     ),
-  );
+  )
 }
 
-export default limit;
+export default limit
