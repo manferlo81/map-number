@@ -31,7 +31,7 @@
     "preversion": "npm run clean && npm test && npm run lint && npm run build"
   },
   "devDependencies": {
-    "@types/jest": "^24.0.21",
+    "@types/jest": "^24.0.22",
     "@types/node": "^12.12.6",
     "bundlib": "^0.13.1",
     "chokidar": "^3.3.0",
