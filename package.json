@@ -24,11 +24,11 @@
   ],
   "scripts": {
     "clean": "rm -rf node_modules/.cache/bundlib node_modules/.cache/jest dist types coverage",
-    "lint": "eslint src/**/*.ts",
+    "lint": "eslint src/** test/**",
     "dev": "bundlib -dw",
     "build": "bundlib -d",
     "test": "jest --color -w 3",
-    "prerelease": "npm run clean && npm test && npm run lint && npm run build",
+    "prerelease": "npm run clean && npm run lint && npm test && npm run build",
     "release": "standard-version"
   },
   "devDependencies": {
