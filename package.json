@@ -24,7 +24,7 @@
   ],
   "scripts": {
     "clean": "rimraf dist types coverage node_modules/.cache/bundlib node_modules/.cache/jest",
-    "lint": "eslint src/** test/**",
+    "lint": "eslint src/** __test__/**",
     "dev": "bundlib -dw",
     "build": "bundlib -d",
     "test": "jest --color -w 3",
