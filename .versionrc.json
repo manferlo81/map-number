@@ -1,6 +1,6 @@
 {
-  "changelogHeader": "# map-number changelog\n\n## Changes\n",
-  "header": "# map-number changelog\n\n## Changes\n",
+  "changelogHeader": "# map-number changelog\n\n## Version History\n",
+  "header": "# map-number changelog\n\n## Version History\n",
   "types": [
     {
       "type": "chore",

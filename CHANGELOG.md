@@ -1,6 +1,6 @@
 # map-number changelog
 
-## Changes
+## Version History
 
 ### [1.2.6](https://github.com/manferlo81/map-number/compare/v1.2.5...v1.2.6) (2019-11-07)
 
@@ -139,6 +139,6 @@
 * fixed [#1](https://github.com/manferlo81/map-number/issues/1)
 * refactoring
 
-## 1.0.0
+## 1.0.0 (2019-05-21)
 
 * first release
