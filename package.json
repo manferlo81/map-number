@@ -23,7 +23,7 @@
     "numbers"
   ],
   "scripts": {
-    "clean": "rm -rf node_modules/.cache/bundlib node_modules/.cache/jest dist types coverage",
+    "clean": "rimraf dist types coverage node_modules/.cache/bundlib node_modules/.cache/jest",
     "lint": "eslint src/** test/**",
     "dev": "bundlib -dw",
     "build": "bundlib -d",
@@ -41,6 +41,7 @@
     "eslint": "^6.6.0",
     "husky": "^3.0.9",
     "jest": "^24.9.0",
+    "rimraf": "^3.0.0",
     "standard-version": "^7.0.0",
     "ts-jest": "^24.1.0",
     "typescript": "^3.7.2"
