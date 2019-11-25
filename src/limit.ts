@@ -1,7 +1,7 @@
 import map from './map'
 import { max, min } from './math'
 
-function limit(num: number, inMin: number, inMax: number, outMin: number, outMax: number) {
+function limit(num: number, inMin: number, inMax: number, outMin: number, outMax: number): number {
   return max(
     min(
       outMin,
