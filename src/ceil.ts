@@ -1,4 +1,5 @@
 import map from './map'
+import { MapNumberFunction } from './types'
 
 function ceil(num: number, inMin: number, inMax: number, outMin: number, outMax: number): number {
   return Math.ceil(
@@ -6,4 +7,4 @@ function ceil(num: number, inMin: number, inMax: number, outMin: number, outMax:
   )
 }
 
-export default ceil
+export default ceil as MapNumberFunction

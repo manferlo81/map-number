@@ -1,4 +1,5 @@
 import map from './map'
+import { MapNumberFunction } from './types'
 
 function floor(num: number, inMin: number, inMax: number, outMin: number, outMax: number): number {
   return Math.floor(
@@ -6,4 +7,4 @@ function floor(num: number, inMin: number, inMax: number, outMin: number, outMax
   )
 }
 
-export default floor
+export default floor as MapNumberFunction

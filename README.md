@@ -24,6 +24,8 @@ npm i map-number
 <script src="https://cdn.jsdelivr.net/npm/map-number@latest/dist/map.umd.min.js"></script>
 ```
 
+> *for production you may want to replace the "latest" version for a specific one.*
+
 *[more options...](https://www.jsdelivr.com/package/npm/map-number?version=latest)*
 
 ### unpkg
@@ -38,6 +40,8 @@ npm i map-number
 <script src="https://unpkg.com/map-number@latest/dist/map.umd.min.js"></script>
 ```
 
+> *for production you may want to replace the "latest" version for a specific one.*
+
 *[more options...](https://unpkg.com/map-number@latest/)*
 
 ## Usage
@@ -45,8 +49,8 @@ npm i map-number
 ### Node.js
 
 ```javascript
-const mapNum = require("map-number");
-const y = mapNum.map(Math.sin(angle), -1, 1, 100, 0);
+const { map } = require("map-number");
+const result = map(Math.sin(angle), -1, 1, 100, 0);
 ```
 
 ### Browser
@@ -54,14 +58,14 @@ const y = mapNum.map(Math.sin(angle), -1, 1, 100, 0);
 *After the* `script` *tag has been added,* `mapNum` *will be available globally.*
 
 ```javascript
-const y = mapNum.map(Math.sin(angle), -1, 1, 100, 0);
+const result = mapNum.map(Math.sin(angle), -1, 1, 100, 0);
 ```
 
 ## API
 
 ### map
 
-*Maps a number in a range to a different range, returning a floting point number. The result is not limited to the the given output range.*
+*Maps a number in a range to a different range, returning a floting point number. The result **WILL NOT** be limited (clamped) to the the given output range.*
 
 > *This is the core function and all other map function variants depend on it.*
 
@@ -73,7 +77,7 @@ function map(num: number, inMin: number, inMax: number, outMin: number, outMax: 
 
 ### floor
 
-*Maps a number in a range to a different range, returning a number rounded **down** to the **previous** integer number. The result is not limited to the the given output range.*
+*Maps a number in a range to a different range, returning a number rounded **down** to the **previous** integer number. The result **WILL NOT** be limited (clamped) to the the given output range.*
 
 ***syntax***
 
@@ -83,7 +87,7 @@ function floor(num: number, inMin: number, inMax: number, outMin: number, outMax
 
 ### ceil
 
-*Maps a number in a range to a different range, returning a number rounded **up** to the **next** integer number. The result is not blimitedto the the given output range.*
+*Maps a number in a range to a different range, returning a number rounded **up** to the **next** integer number. The result **WILL NOT** be limited (clamped) to the the given output range.*
 
 ***syntax***
 
@@ -93,7 +97,7 @@ function ceil(num: number, inMin: number, inMax: number, outMin: number, outMax:
 
 ### round
 
-*Maps a number in a range to a different range, returning a number **rounded** to the **closest** integer number. The result is not blimitedto the the given output range.*
+*Maps a number in a range to a different range, returning a number **rounded** to the **closest** integer number. The result **WILL NOT** be limited (clamped) to the the given output range.*
 
 ***syntax***
 
@@ -103,7 +107,9 @@ function round(num: number, inMin: number, inMax: number, outMin: number, outMax
 
 ### limit
 
-*Maps a number in a range to a different range, returning a floting point number. The result will be bounded to the given output range.*
+#### alias: `clamp`
+
+*Maps a number in a range to a different range, returning a floting point number. The result will be limited (clamped) to the given output range.*
 
 ***syntax***
 
@@ -111,35 +117,34 @@ function round(num: number, inMin: number, inMax: number, outMin: number, outMax
 function limit(num: number, inMin: number, inMax: number, outMin: number, outMax: number): number;
 ```
 
-### wrap
+### compile
 
-*Creates a single argument function implementing the given [`map`](#map), [`floor`](#floor), [`ceil`](#ceil), [`round`](#round) or [`limit`](#limit) function. Useful when you need to map values multiple times within the same range, [see example](#example).*
+#### alias: `wrap`, `create`
+
+*Creates a single argument function implementing the given [`map`](#map), [`floor`](#floor), [`ceil`](#ceil), [`round`](#round), [`limit`](#limit) or [`clamp`](#limit) function. Useful when you need to map values multiple times within the same range, see example below.*
 
 ***syntax***
 
 ```typescript
-function wrap(func: MapFunction, inMin: number, inMax: number, outMin: number, outMax: number): (num: number) => number;
+function compile(func: MapNumberFunction, inMin: number, inMax: number, outMin: number, outMax: number): (num: number) => number;
 ```
 
 ***example***
 
 ```javascript
-import { map, wrap } from "map-number";
+import { map, round, compile } from "map-number";
 
-const myMap = wrap(map, -1, 1, 100, 0);
+const myMap = compile(map, -1, 1, 100, 0);
+const myRound = compile(round, -1, 1, 100, 0);
 
 myMap(-0.2);
-myMap(0.33);
+myRound(0.33);
 
 // ... is equivalent to...
 
 map(-0.2, -1, 1, 100, 0);
-map(0.33, -1, 1, 100, 0);
+round(0.33, -1, 1, 100, 0);
 ```
-
-### create
-
-*An alias for [wrap](#wrap) method, deprecated in version* `1.2.0`*, use [wrap](#wrap) instead.*
 
 ## License
 

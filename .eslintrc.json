@@ -41,6 +41,15 @@
       "error",
       "always-multiline"
     ],
-    "object-shorthand": "error"
+    "object-shorthand": "error",
+    "no-useless-rename": "error",
+    "no-multiple-empty-lines": [
+      "error",
+      {
+        "max": 1,
+        "maxBOF": 0,
+        "maxEOF": 0
+      }
+    ]
   }
 }

@@ -1,4 +1,5 @@
 import map from './map'
+import { MapNumberFunction } from './types'
 
 function round(num: number, inMin: number, inMax: number, outMin: number, outMax: number): number {
   return Math.round(
@@ -6,4 +7,4 @@ function round(num: number, inMin: number, inMax: number, outMin: number, outMax
   )
 }
 
-export default round
+export default round as MapNumberFunction
