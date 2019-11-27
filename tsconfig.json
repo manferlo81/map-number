@@ -10,5 +10,11 @@
     "noImplicitThis": true,
     "noImplicitReturns": true,
     "noUnusedLocals": true
-  }
+  },
+  "include": [
+    "src"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
 }
