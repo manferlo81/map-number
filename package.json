@@ -20,7 +20,7 @@
   "typings": "types/index.d.ts",
   "scripts": {
     "clean": "rimraf dist types coverage node_modules/.cache/bundlib node_modules/.cache/jest",
-    "lint": "eslint src/** __test__/**",
+    "lint": "eslint src/**/*.ts __test__/**/*.ts",
     "dev": "bundlib -dw",
     "build": "bundlib -d",
     "test": "jest --color -w 3",
