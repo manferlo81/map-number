@@ -1,4 +1,4 @@
-import { map } from '../src'
+import { map } from '../src';
 
 describe('map method', () => {
 
@@ -8,9 +8,9 @@ describe('map method', () => {
       map(3, 2, 5, 20, 26),
     ).toBeCloseTo(
       22,
-    )
+    );
 
-  })
+  });
 
   test('should return out-range output', () => {
 
@@ -18,15 +18,15 @@ describe('map method', () => {
       map(6, 2, 5, 20, 26),
     ).toBeCloseTo(
       28,
-    )
+    );
 
     expect(
       map(1, 2, 5, 20, 26),
     ).toBeCloseTo(
       18,
-    )
+    );
 
-  })
+  });
 
   test('should invert in-range output', () => {
 
@@ -34,9 +34,9 @@ describe('map method', () => {
       map(3, 1, 9, 9, 1),
     ).toBeCloseTo(
       7,
-    )
+    );
 
-  })
+  });
 
   test('should invert out-range output', () => {
 
@@ -44,9 +44,9 @@ describe('map method', () => {
       map(0, 1, 9, 9, 1),
     ).toBeCloseTo(
       10,
-    )
+    );
 
-  })
+  });
 
   test('should return non integer output', () => {
 
@@ -54,8 +54,8 @@ describe('map method', () => {
       map(33.1, 10, 90, 1, 9),
     ).toBeCloseTo(
       3.31,
-    )
+    );
 
-  })
+  });
 
-})
+});

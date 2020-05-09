@@ -1,4 +1,4 @@
-import { floor } from '../src'
+import { floor } from '../src';
 
 describe('floor method', () => {
 
@@ -8,9 +8,9 @@ describe('floor method', () => {
       floor(23, 20, 50, 2, 5),
     ).toBe(
       2,
-    )
+    );
 
-  })
+  });
 
   test('should return out-range output', () => {
 
@@ -18,15 +18,15 @@ describe('floor method', () => {
       floor(6, 20, 50, 2, 5),
     ).toBe(
       0,
-    )
+    );
 
     expect(
       floor(62, 20, 50, 2, 5),
     ).toBe(
       6,
-    )
+    );
 
-  })
+  });
 
   test('should invert in-range output', () => {
 
@@ -34,9 +34,9 @@ describe('floor method', () => {
       floor(3.1, 1, 9, 9, 1),
     ).toBe(
       6,
-    )
+    );
 
-  })
+  });
 
   test('should invert out-range output', () => {
 
@@ -44,8 +44,8 @@ describe('floor method', () => {
       floor(-1.3, 1, 9, 9, 1),
     ).toBe(
       11,
-    )
+    );
 
-  })
+  });
 
-})
+});

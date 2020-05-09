@@ -1,4 +1,4 @@
-import { ceil } from '../src'
+import { ceil } from '../src';
 
 describe('ceil method', () => {
 
@@ -8,9 +8,9 @@ describe('ceil method', () => {
       ceil(23, 20, 50, 2, 5),
     ).toBe(
       3,
-    )
+    );
 
-  })
+  });
 
   test('should return out-range output', () => {
 
@@ -18,15 +18,15 @@ describe('ceil method', () => {
       ceil(6, 20, 50, 2, 5),
     ).toBe(
       1,
-    )
+    );
 
     expect(
       ceil(62, 20, 50, 2, 5),
     ).toBe(
       7,
-    )
+    );
 
-  })
+  });
 
   test('should invert in-range output', () => {
 
@@ -34,9 +34,9 @@ describe('ceil method', () => {
       ceil(3.1, 1, 9, 9, 1),
     ).toBe(
       7,
-    )
+    );
 
-  })
+  });
 
   test('should invert out-range output', () => {
 
@@ -44,8 +44,8 @@ describe('ceil method', () => {
       ceil(-1.3, 1, 9, 9, 1),
     ).toBe(
       12,
-    )
+    );
 
-  })
+  });
 
-})
+});

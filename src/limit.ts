@@ -1,6 +1,6 @@
-import map from './map'
-import { max, min } from './math'
-import { MapNumberFunction } from './types'
+import map from './map';
+import { max, min } from './math';
+import { MapNumberFunction } from './types';
 
 function limit(num: number, inMin: number, inMax: number, outMin: number, outMax: number): number {
   return max(
@@ -9,7 +9,7 @@ function limit(num: number, inMin: number, inMax: number, outMin: number, outMax
       max(outMin, outMax),
       map(num, inMin, inMax, outMin, outMax),
     ),
-  )
+  );
 }
 
-export default limit as MapNumberFunction
+export default limit as MapNumberFunction;
