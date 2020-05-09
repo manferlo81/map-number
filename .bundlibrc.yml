@@ -1,2 +1,3 @@
 name: mapNum
 min: browser
+project: tsconfig-build.json
