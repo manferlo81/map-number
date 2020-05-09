@@ -13,8 +13,8 @@
     "number",
     "numbers"
   ],
-  "main": "dist/map.cjs.js",
-  "module": "dist/map.es.js",
+  "main": "dist/map.js",
+  "module": "dist/map.mjs",
   "browser": "dist/map.umd.js",
   "types": "types/index.d.ts",
   "typings": "types/index.d.ts",
