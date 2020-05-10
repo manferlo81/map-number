@@ -1,5 +1,3 @@
-const threshold = 95;
-
 module.exports = {
 
   testEnvironment: 'node',
@@ -16,14 +14,6 @@ module.exports = {
     'text',
     'text-summary',
   ],
-  coverageThreshold: {
-    global: {
-      branches: threshold,
-      functions: threshold,
-      lines: threshold,
-      statements: threshold,
-    },
-  },
 
   verbose: true,
 
