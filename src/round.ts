@@ -1,10 +1,4 @@
-import map from './map';
-import { MapNumberFunction } from './types';
+import { map } from './map';
+import { transform } from './transform';
 
-function round(num: number, inMin: number, inMax: number, outMin: number, outMax: number): number {
-  return Math.round(
-    map(num, inMin, inMax, outMin, outMax),
-  );
-}
-
-export default round as MapNumberFunction;
+export const round = transform(map, Math.round);

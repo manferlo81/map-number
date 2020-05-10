@@ -1,51 +1,43 @@
 import { limit } from '../src';
+import { expectValues } from './tools/test-values';
 
-describe('limit method', () => {
+describe('"limit" method', () => {
 
-  test('should return in-range output', () => {
-
-    expect(
-      limit(3.3, 2, 5, 20, 50),
-    ).toBeCloseTo(
-      33,
-    );
-
+  test('Should return in-range output', () => {
+    expectValues([
+      { value: 20, expected: 2 },
+      { value: 33, expected: 3.3 },
+      { value: 39, expected: 3.9 },
+      { value: 50, expected: 5 },
+    ], limit, 20, 50, 2, 5);
   });
 
-  test('should limit output', () => {
-
-    expect(
-      limit(1, 2, 5, 20, 50),
-    ).toBeCloseTo(
-      20,
-    );
-
-    expect(
-      limit(6, 2, 5, 20, 50),
-    ).toBeCloseTo(
-      50,
-    );
-
+  test('Should limit output', () => {
+    expectValues([
+      { value: 1, expected: 20 },
+      { value: 1.9, expected: 20 },
+      { value: 6.1, expected: 50 },
+      { value: 6, expected: 50 },
+    ], limit, 2, 5, 20, 50);
   });
 
-  test('should invert output', () => {
-
-    expect(
-      limit(3.1, 1, 9, 9, 1),
-    ).toBeCloseTo(
-      6.9,
-    );
-
+  test('Should limit inverted output', () => {
+    expectValues([
+      { value: -0.5, expected: 9 },
+      { value: 1, expected: 9 },
+      { value: 3.1, expected: 6.9 },
+      { value: 9, expected: 1 },
+      { value: 10.5, expected: 1 },
+    ], limit, 1, 9, 9, 1);
   });
 
-  test('should return non integer output', () => {
-
-    expect(
-      limit(33.1, 10, 90, 1, 9),
-    ).toBeCloseTo(
-      3.31,
-    );
-
+  test('Should return non integer output', () => {
+    expectValues([
+      { value: 9.9, expected: 1 },
+      { value: 33.1, expected: 3.31 },
+      { value: 55.3, expected: 5.53 },
+      { value: 90.1, expected: 9 },
+    ], limit, 10, 90, 1, 9);
   });
 
 });

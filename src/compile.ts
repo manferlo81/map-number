@@ -1,7 +1,5 @@
-import { CompiledMapNumberFunction, MapNumberFunction } from './types';
+import { CompiledMapFunction, MapFunction } from './types';
 
-function compile(func: MapNumberFunction, inMin: number, inMax: number, outMin: number, outMax: number): CompiledMapNumberFunction {
-  return (num: number): number => func(num, inMin, inMax, outMin, outMax);
+export function compile<T>(func: MapFunction<T>, inMin: number, inMax: number, outMin: number, outMax: number): CompiledMapFunction<T> {
+  return (num: number): T => func(num, inMin, inMax, outMin, outMax);
 }
-
-export default compile;

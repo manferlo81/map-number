@@ -49,7 +49,14 @@ npm i map-number
 ### Node.js
 
 ```javascript
-const { map } = require("map-number");
+const { map } = require('map-number');
+const result = map(Math.sin(angle), -1, 1, 100, 0);
+```
+
+***using javascript modules...***
+
+```javascript
+import { map } from 'map-number';
 const result = map(Math.sin(angle), -1, 1, 100, 0);
 ```
 
@@ -65,9 +72,9 @@ const result = mapNum.map(Math.sin(angle), -1, 1, 100, 0);
 
 ### map
 
-*Maps a number in a range to a different range, returning a floting point number. The result **WILL NOT** be limited (clamped) to the the given output range.*
+*Maps a number within a given range to a different range, returning a floting point number. The result **WILL NOT** be limited (clamped) to the the given output range.*
 
-> *This is the core function and all other map function variants depend on it.*
+*This is the core function and all other map function variants depend on it.*
 
 ***syntax***
 
@@ -77,7 +84,7 @@ function map(num: number, inMin: number, inMax: number, outMin: number, outMax: 
 
 ### floor
 
-*Maps a number in a range to a different range, returning a number rounded **down** to the **previous** integer number. The result **WILL NOT** be limited (clamped) to the the given output range.*
+*Maps a number within a given range to a different range, returning a number rounded **down** to the **previous** integer number. The result **WILL NOT** be limited (clamped) to the the given output range.*
 
 ***syntax***
 
@@ -87,7 +94,7 @@ function floor(num: number, inMin: number, inMax: number, outMin: number, outMax
 
 ### ceil
 
-*Maps a number in a range to a different range, returning a number rounded **up** to the **next** integer number. The result **WILL NOT** be limited (clamped) to the the given output range.*
+*Maps a number within a given range to a different range, returning a number rounded **up** to the **next** integer number. The result **WILL NOT** be limited (clamped) to the the given output range.*
 
 ***syntax***
 
@@ -97,7 +104,7 @@ function ceil(num: number, inMin: number, inMax: number, outMin: number, outMax:
 
 ### round
 
-*Maps a number in a range to a different range, returning a number **rounded** to the **closest** integer number. The result **WILL NOT** be limited (clamped) to the the given output range.*
+*Maps a number within a given range to a different range, returning a number **rounded** to the **closest** integer number. The result **WILL NOT** be limited (clamped) to the the given output range.*
 
 ***syntax***
 
@@ -105,11 +112,13 @@ function ceil(num: number, inMin: number, inMax: number, outMin: number, outMax:
 function round(num: number, inMin: number, inMax: number, outMin: number, outMax: number): number;
 ```
 
+> *If you need to round to a specific number of decimal places, you can use the `transform` method and write your own round function.*
+
 ### limit
 
-#### alias: `clamp`
+***alias: `clamp`***
 
-*Maps a number in a range to a different range, returning a floting point number. The result will be limited (clamped) to the given output range.*
+*Maps a number within a given range to a different range, returning a floting point number. The result will be limited (clamped) to the given output range.*
 
 ***syntax***
 
@@ -119,14 +128,16 @@ function limit(num: number, inMin: number, inMax: number, outMin: number, outMax
 
 ### compile
 
-#### alias: `wrap`, `create`
+***alias: `wrap`, `create`***
 
-*Creates a single argument function implementing the given [`map`](#map), [`floor`](#floor), [`ceil`](#ceil), [`round`](#round), [`limit`](#limit) or [`clamp`](#limit) function. Useful when you need to map values multiple times within the same range, see example below.*
+*Creates a single argument function implementing the given [`map`](#map), [`floor`](#floor), [`ceil`](#ceil), [`round`](#round), [`limit`](#limit), [`clamp`](#limit) or user created function. Useful when you need to map values multiple times within the same range, see example below.*
 
 ***syntax***
 
 ```typescript
-function compile(func: MapNumberFunction, inMin: number, inMax: number, outMin: number, outMax: number): (num: number) => number;
+function compile<T>(func: MapFunction<T>, inMin: number, inMax: number, outMin: number, outMax: number): Compiled<T>;
+
+type Compiled<T> = (num: number) => T;
 ```
 
 ***example***
@@ -135,15 +146,39 @@ function compile(func: MapNumberFunction, inMin: number, inMax: number, outMin: 
 import { map, round, compile } from "map-number";
 
 const myMap = compile(map, -1, 1, 100, 0);
-const myRound = compile(round, -1, 1, 100, 0);
 
 myMap(-0.2);
-myRound(0.33);
+myMap(0.33);
+myMap(0.5);
 
 // ... is equivalent to...
 
 map(-0.2, -1, 1, 100, 0);
-round(0.33, -1, 1, 100, 0);
+map(0.33, -1, 1, 100, 0);
+map(0.5, -1, 1, 100, 0);
+```
+
+### transform
+
+*Creates a map function where the result of the given function is transformed to a different value. This method is used internally to create the `floor`, `ceil` and `round` methods.*
+
+***syntax***
+
+```typescript
+function transform<T>(func: MapNumberFunction, transformer: (value: number) => T): MapFunction<T>;
+```
+
+***example***
+
+```javascript
+import { transform, map } from "map-number";
+
+const plusOne = transform(
+  map,
+  (value) => value + 1,
+);
+
+plusOne(0.4, 0, 1, 0, 100); // => 41
 ```
 
 ## License

@@ -1,18 +1,20 @@
-import { map, compile } from '../src';
+import { compile, map } from '../src';
 
-describe('wrap method', () => {
+describe('"compile" method', () => {
 
-  test('should return the correct output', () => {
+  test('Should return the correct output', () => {
 
     const boundaries: [number, number, number, number] = [2, 5, 20, 50];
-    const myMap = compile(map, ...boundaries);
+    const compiled = compile(map, ...boundaries);
 
-    const nums = [3.3, 0.01, 10];
+    const values = [
+      3.3,
+      0.01,
+      10,
+    ];
 
-    nums.forEach((num) => {
-      const myMapResult = myMap(num);
-      const mapResult = map(num, ...boundaries);
-      expect(myMapResult).toBe(mapResult);
+    values.forEach((value) => {
+      expect(compiled(value)).toBe(map(value, ...boundaries));
     });
 
   });

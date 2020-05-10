@@ -1,15 +1,18 @@
-import map from './map';
-import { max, min } from './math';
-import { MapNumberFunction } from './types';
+import { map } from './map';
 
-function limit(num: number, inMin: number, inMax: number, outMin: number, outMax: number): number {
-  return max(
-    min(outMin, outMax),
-    min(
-      max(outMin, outMax),
-      map(num, inMin, inMax, outMin, outMax),
-    ),
-  );
+export function limit(num: number, inMin: number, inMax: number, outMin: number, outMax: number): number {
+
+  let boundMin = outMin;
+  let boundMax = outMax;
+
+  if (boundMax < boundMin) {
+    const temp = boundMin;
+    boundMin = boundMax;
+    boundMax = temp;
+  }
+
+  const result = map(num, inMin, inMax, outMin, outMax);
+
+  return result > boundMax ? boundMax : result < boundMin ? boundMin : result;
+
 }
-
-export default limit as MapNumberFunction;
