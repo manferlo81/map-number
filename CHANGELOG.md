@@ -2,6 +2,14 @@
 
 ## Version History
 
+## [1.3.0](https://github.com/manferlo81/map-number/compare/v1.2.6...v1.3.0) (2020-05-10)
+
+
+### Features
+
+* compile & clamp alias ([364987b](https://github.com/manferlo81/map-number/commit/364987ba21cffd5bae4b25de3c8b01f457b5a3c7))
+* Transform method ([bb3f2b3](https://github.com/manferlo81/map-number/commit/bb3f2b39d59d612a38add2d5f08422f6a7a5af1f))
+
 ### [1.2.6](https://github.com/manferlo81/map-number/compare/v1.2.5...v1.2.6) (2019-11-07)
 
 ### [1.2.5](https://github.com/manferlo81/map-number/compare/v1.2.4...v1.2.5) (2019-09-14)
