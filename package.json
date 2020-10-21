@@ -47,9 +47,6 @@
   "engines": {
     "node": "6"
   },
-  "files": [
-    "dist"
-  ],
   "author": {
     "name": "Manuel Fernández",
     "email": "manferlo81@gmail.com"
