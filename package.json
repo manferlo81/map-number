@@ -16,10 +16,10 @@
   "main": "dist/map.js",
   "module": "dist/map.mjs",
   "browser": "dist/map.umd.js",
-  "types": "types/index.d.ts",
-  "typings": "types/index.d.ts",
+  "types": "dist/index.d.ts",
+  "typings": "dist/index.d.ts",
   "scripts": {
-    "clean": "rimraf dist types coverage node_modules/.cache/bundlib node_modules/.cache/jest",
+    "clean": "rimraf dist coverage node_modules/.cache/bundlib node_modules/.cache/jest",
     "lint": "eslint src/**/*.ts __test__/**/*.ts",
     "dev": "bundlib -dw",
     "build": "bundlib -d",
@@ -48,8 +48,7 @@
     "node": "6"
   },
   "files": [
-    "dist",
-    "types"
+    "dist"
   ],
   "author": {
     "name": "Manuel Fernández",
