@@ -1,4 +1,4 @@
 import { map } from './map';
-import { transform } from './transform';
+import { transformed } from './transform';
 
-export const round = transform(map, Math.round);
+export const round = transformed(map, Math.round);

@@ -1,6 +1,6 @@
 import { map } from './map';
 
-export function limit(num: number, inMin: number, inMax: number, outMin: number, outMax: number): number {
+export function limit(value: number, inMin: number, inMax: number, outMin: number, outMax: number): number {
 
   let boundMin = outMin;
   let boundMax = outMax;
@@ -11,7 +11,7 @@ export function limit(num: number, inMin: number, inMax: number, outMin: number,
     boundMax = temp;
   }
 
-  const result = map(num, inMin, inMax, outMin, outMax);
+  const result = map(value, inMin, inMax, outMin, outMax);
 
   return result > boundMax ? boundMax : result < boundMin ? boundMin : result;
 

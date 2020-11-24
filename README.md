@@ -72,14 +72,20 @@ const result = mapNum.map(Math.sin(angle), -1, 1, 100, 0);
 
 ### map
 
-*Maps a number within a given range to a different range, returning a floting point number. The result **WILL NOT** be limited (clamped) to the the given output range.*
+*Maps a number within a given range to a different range, returning a floating point number. The result **WILL NOT** be limited (clamped) to the the given output range.*
 
 *This is the core function and all other map function variants depend on it.*
 
 ***syntax***
 
 ```typescript
-function map(num: number, inMin: number, inMax: number, outMin: number, outMax: number): number;
+map: (
+  input: number,
+  inputMin: number,
+  inputMax: number,
+  outputMin: number,
+  outputMax: number,
+) => number;
 ```
 
 ### floor
@@ -89,7 +95,13 @@ function map(num: number, inMin: number, inMax: number, outMin: number, outMax: 
 ***syntax***
 
 ```typescript
-function floor(num: number, inMin: number, inMax: number, outMin: number, outMax: number): number;
+floor: (
+  input: number,
+  inputMin: number,
+  inputMax: number,
+  outputMin: number,
+  outputMax: number,
+) => number;
 ```
 
 ### ceil
@@ -99,7 +111,13 @@ function floor(num: number, inMin: number, inMax: number, outMin: number, outMax
 ***syntax***
 
 ```typescript
-function ceil(num: number, inMin: number, inMax: number, outMin: number, outMax: number): number;
+ceil: (
+  input: number,
+  inputMin: number,
+  inputMax: number,
+  outputMin: number,
+  outputMax: number,
+) => number;
 ```
 
 ### round
@@ -109,21 +127,33 @@ function ceil(num: number, inMin: number, inMax: number, outMin: number, outMax:
 ***syntax***
 
 ```typescript
-function round(num: number, inMin: number, inMax: number, outMin: number, outMax: number): number;
+round: (
+  input: number,
+  inputMin: number,
+  inputMax: number,
+  outputMin: number,
+  outputMax: number,
+) => number;
 ```
 
-> *If you need to round to a specific number of decimal places, you can use the `transform` method and write your own round function.*
+> *If you need to round to a specific number of decimal places, you can use the [`transformed`](#transformed) method and write your own round function.*
 
 ### limit
 
 ***alias: `clamp`***
 
-*Maps a number within a given range to a different range, returning a floting point number. The result will be limited (clamped) to the given output range.*
+*Maps a number within a given range to a different range, returning a floating point number. The result will be limited (clamped) to the given output range.*
 
 ***syntax***
 
 ```typescript
-function limit(num: number, inMin: number, inMax: number, outMin: number, outMax: number): number;
+limit: (
+  input: number,
+  inputMin: number,
+  inputMax: number,
+  outputMin: number,
+  outputMax: number,
+) => number;
 ```
 
 ### compile
@@ -135,9 +165,15 @@ function limit(num: number, inMin: number, inMax: number, outMin: number, outMax
 ***syntax***
 
 ```typescript
-function compile<T>(func: MapFunction<T>, inMin: number, inMax: number, outMin: number, outMax: number): Compiled<T>;
+compile: <O, I>(
+  map: MapFunction<O, I>,
+  inputMin: number,
+  inputMax: number,
+  outputMin: number,
+  outputMax: number,
+) => Compiled<O, I>;
 
-type Compiled<T> = (num: number) => T;
+type Compiled<O, I> = (input: I) => O;
 ```
 
 ***example***
@@ -158,14 +194,19 @@ map(0.33, -1, 1, 100, 0);
 map(0.5, -1, 1, 100, 0);
 ```
 
-### transform
+### transformed
 
-*Creates a map function where the result of the given function is transformed to a different value. This method is used internally to create the `floor`, `ceil` and `round` methods.*
+***alias: `transform`***
+
+*Creates a map function where the result of the given function is transformed to a different value. This method is used internally to create the [`floor`](#floor), [`ceil`](#ceil) and [`round`](#round) methods.*
 
 ***syntax***
 
 ```typescript
-function transform<T>(func: MapNumberFunction, transformer: (value: number) => T): MapFunction<T>;
+transformed: <O, M, I>(
+  map: MapFunction<I, M>,
+  transform: (value: M) => O,
+) => MapFunction<O, I>;
 ```
 
 ***example***
@@ -178,7 +219,7 @@ const plusOne = transform(
   (value) => value + 1,
 );
 
-plusOne(0.4, 0, 1, 0, 100); // => 41
+plusOne(0.4, 0, 1, 0, 100); // => 41 instead of 40
 ```
 
 ## License

@@ -1,4 +1,4 @@
 import { map } from './map';
-import { transform } from './transform';
+import { transformed } from './transform';
 
-export const ceil = transform(map, Math.ceil);
+export const ceil = transformed(map, Math.ceil);

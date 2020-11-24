@@ -1,4 +1,4 @@
 import { map } from './map';
-import { transform } from './transform';
+import { transformed } from './transform';
 
-export const floor = transform(map, Math.floor);
+export const floor = transformed(map, Math.floor);
