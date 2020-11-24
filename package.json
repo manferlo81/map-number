@@ -13,11 +13,16 @@
     "number",
     "numbers"
   ],
-  "main": "dist/map.js",
-  "module": "dist/map.mjs",
-  "browser": "dist/map.umd.js",
-  "types": "dist/index.d.ts",
-  "typings": "dist/index.d.ts",
+  "type": "commonjs",
+  "main": "./dist/map.js",
+  "module": "./dist/map.mjs",
+  "exports": {
+    "import": "./dist/map.mjs",
+    "default": "./dist/map.js"
+  },
+  "browser": "./dist/map.umd.js",
+  "types": "./dist/index.d.ts",
+  "typings": "./dist/index.d.ts",
   "scripts": {
     "clean": "rimraf dist coverage node_modules/.cache/bundlib node_modules/.cache/jest",
     "lint": "eslint src/**/*.ts __test__/**/*.ts",
