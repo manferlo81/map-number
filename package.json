@@ -14,11 +14,11 @@
     "numbers"
   ],
   "type": "commonjs",
-  "main": "./dist/map.js",
+  "main": "./dist/map.cjs",
   "module": "./dist/map.mjs",
   "exports": {
     "import": "./dist/map.mjs",
-    "default": "./dist/map.js"
+    "default": "./dist/map.cjs"
   },
   "browser": "./dist/map.umd.js",
   "types": "./dist/index.d.ts",
