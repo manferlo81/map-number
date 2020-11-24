@@ -205,8 +205,10 @@ map(0.5, -1, 1, 100, 0);
 ```typescript
 transformed: <O, M, I>(
   map: MapFunction<I, M>,
-  transform: (value: M) => O,
+  transform: Transformer<O, M>,
 ) => MapFunction<O, I>;
+
+type Transformer<O, I> = (value: I, outputMin: number, outputMax: number) => O;
 ```
 
 ***example***
