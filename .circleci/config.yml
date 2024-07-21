@@ -14,6 +14,11 @@ executors:
       - image: cimg/node:18.20
     working_directory: ~/map-number
 
+  executor_node_20:
+    docker:
+      - image: cimg/node:20.15
+    working_directory: ~/map-number
+
 commands:
   command_checkout_cache_install:
     steps:
@@ -77,6 +82,11 @@ jobs:
     steps:
       - command_ci
 
+  job_test_and_build_node_20:
+    executor: executor_node_20
+    steps:
+      - command_ci
+
   job_upload_coverage:
     executor: executor_node_16
     steps:
@@ -107,10 +117,18 @@ workflows:
             branches:
               only: /.*/
 
+      - job_test_and_build_node_20:
+          filters:
+            tags:
+              only: /.*/
+            branches:
+              only: /.*/
+
       - job_upload_coverage:
           requires:
             - job_test_and_build_node_16
             - job_test_and_build_node_18
+            - job_test_and_build_node_20
           filters:
             branches:
               only: /master/
@@ -120,6 +138,7 @@ workflows:
           requires:
             - job_test_and_build_node_16
             - job_test_and_build_node_18
+            - job_test_and_build_node_20
           filters:
             tags:
               only: /^v\d+\.\d+\.\d+$/
