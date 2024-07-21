@@ -1,5 +1,6 @@
-module.exports = {
+import { Config as JestConfig } from "jest";
 
+const config: JestConfig = {
   testEnvironment: 'node',
   cacheDirectory: 'node_modules/.cache/jest',
   preset: 'ts-jest',
@@ -10,11 +11,11 @@ module.exports = {
   ],
   coverageDirectory: 'coverage',
   coverageReporters: [
-    process.env.CI ? 'json' : 'lcov',
+    process.env.CI ? 'json' : 'html',
     'text',
-    'text-summary',
   ],
 
   verbose: true,
-
 };
+
+export default config;
