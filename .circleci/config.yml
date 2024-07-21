@@ -71,23 +71,27 @@ commands:
       - command_test_and_build
 
 jobs:
-  job_test_and_build_node_16:
+  job_node_16_test_and_build:
+    description: Test and Build on NodeJS 16
     executor: executor_node_16
     steps:
       - command_ci
       - command_save_workspace
 
-  job_test_and_build_node_18:
+  job_node_18_test_and_build:
+    description: Test and Build on NodeJS 18
     executor: executor_node_18
     steps:
       - command_ci
 
-  job_test_and_build_node_20:
+  job_node_20_test_and_build:
+    description: Test and Build on NodeJS 20
     executor: executor_node_20
     steps:
       - command_ci
 
   job_upload_coverage:
+    description: Upload coverage to Codecov
     executor: executor_node_16
     steps:
       - command_restore_workspace
@@ -95,6 +99,7 @@ jobs:
           file: coverage/*.json
 
   job_publish_to_npm:
+    description: Publish package to npm
     executor: executor_node_16
     steps:
       - command_restore_workspace
@@ -103,21 +108,21 @@ jobs:
 workflows:
   workflow_ci:
     jobs:
-      - job_test_and_build_node_16:
+      - job_node_16_test_and_build:
           filters:
             tags:
               only: /.*/
             branches:
               only: /.*/
 
-      - job_test_and_build_node_18:
+      - job_node_18_test_and_build:
           filters:
             tags:
               only: /.*/
             branches:
               only: /.*/
 
-      - job_test_and_build_node_20:
+      - job_node_20_test_and_build:
           filters:
             tags:
               only: /.*/
@@ -126,9 +131,9 @@ workflows:
 
       - job_upload_coverage:
           requires:
-            - job_test_and_build_node_16
-            - job_test_and_build_node_18
-            - job_test_and_build_node_20
+            - job_node_16_test_and_build
+            - job_node_18_test_and_build
+            - job_node_20_test_and_build
           filters:
             branches:
               only: /master/
@@ -136,9 +141,9 @@ workflows:
       - job_publish_to_npm:
           context: npm
           requires:
-            - job_test_and_build_node_16
-            - job_test_and_build_node_18
-            - job_test_and_build_node_20
+            - job_node_16_test_and_build
+            - job_node_18_test_and_build
+            - job_node_20_test_and_build
           filters:
             tags:
               only: /^v\d+\.\d+\.\d+$/
