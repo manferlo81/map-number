@@ -4,9 +4,14 @@ orbs:
   codecov: codecov/codecov@4.1.0
 
 executors:
-  executor_node:
+  executor_node_16:
     docker:
       - image: cimg/node:16.20
+    working_directory: ~/map-number
+
+  executor_node_18:
+    docker:
+      - image: cimg/node:18.20
     working_directory: ~/map-number
 
 commands:
@@ -24,6 +29,15 @@ commands:
           key: v2-deps-map-number-{{ checksum "package-lock.json" }}
           paths:
             - node_modules
+
+  command_test_and_build:
+    steps:
+      - run:
+          name: Run Tests
+          command: npm test
+      - run:
+          name: Build
+          command: npm run build
 
   command_save_workspace:
     steps:
@@ -46,28 +60,32 @@ commands:
           name: Publish to npm
           command: npm publish
 
-jobs:
-  job_test_and_build:
-    executor: executor_node
+  command_ci:
     steps:
       - command_checkout_cache_install
-      - run:
-          name: Run Tests
-          command: npm test
-      - run:
-          name: Build
-          command: npm run build
+      - command_test_and_build
+
+jobs:
+  job_test_and_build_node_16:
+    executor: executor_node_16
+    steps:
+      - command_ci
       - command_save_workspace
 
+  job_test_and_build_node_18:
+    executor: executor_node_18
+    steps:
+      - command_ci
+
   job_upload_coverage:
-    executor: executor_node
+    executor: executor_node_16
     steps:
       - command_restore_workspace
       - codecov/upload:
           file: coverage/*.json
 
   job_publish_to_npm:
-    executor: executor_node
+    executor: executor_node_16
     steps:
       - command_restore_workspace
       - command_publish_to_npm
@@ -75,7 +93,14 @@ jobs:
 workflows:
   workflow_ci:
     jobs:
-      - job_test_and_build:
+      - job_test_and_build_node_16:
+          filters:
+            tags:
+              only: /.*/
+            branches:
+              only: /.*/
+
+      - job_test_and_build_node_18:
           filters:
             tags:
               only: /.*/
@@ -84,7 +109,8 @@ workflows:
 
       - job_upload_coverage:
           requires:
-            - job_test_and_build
+            - job_test_and_build_node_16
+            - job_test_and_build_node_18
           filters:
             branches:
               only: /master/
@@ -92,7 +118,8 @@ workflows:
       - job_publish_to_npm:
           context: npm
           requires:
-            - job_test_and_build
+            - job_test_and_build_node_16
+            - job_test_and_build_node_18
           filters:
             tags:
               only: /^v\d+\.\d+\.\d+$/
