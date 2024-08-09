@@ -1,5 +1,0 @@
-name: mapNum
-min:
-  - module
-  - browser
-project: tsconfig-build.json

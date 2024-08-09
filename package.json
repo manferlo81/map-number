@@ -27,6 +27,7 @@
   "browser": "./dist/browser/map.umd.js",
   "types": "./dist/types/index.d.ts",
   "typings": "./dist/types/index.d.ts",
+  "bundlib": "./bundlib.config.ts",
   "scripts": {
     "clean:cache": "rimraf node_modules/.cache/{bundlib,jest}",
     "clean:build": "rimraf dist coverage",
@@ -49,7 +50,7 @@
     "@types/node": "^20.14.11",
     "@typescript-eslint/eslint-plugin": "^7.16.1",
     "@typescript-eslint/parser": "^7.16.1",
-    "bundlib": "^0.18.4",
+    "bundlib": "^0.20.0",
     "chokidar": "^3.6.0",
     "eslint": "^8.57.0",
     "husky": "^9.1.1",
@@ -65,12 +66,13 @@
     "@rollup/plugin-eslint": "^9.0.0"
   },
   "engines": {
-    "node": ">=18"
+    "node": ">=16"
   },
   "author": {
     "name": "Manuel Fernández",
     "email": "manferlo81@gmail.com"
   },
+  "homepage": "https://github.com/manferlo81/map-number#readme",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/manferlo81/map-number.git"
@@ -78,6 +80,5 @@
   "bugs": {
     "url": "https://github.com/manferlo81/map-number/issues"
   },
-  "homepage": "https://github.com/manferlo81/map-number#readme",
   "license": "MIT"
 }
