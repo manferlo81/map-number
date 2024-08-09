@@ -15,13 +15,13 @@ npm i map-number
 ### jsDelivr
 
 ```html
-<script src="https://cdn.jsdelivr.net/npm/map-number@latest/dist/map.umd.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/map-number@latest/dist/browser/map.umd.js"></script>
 ```
 
 ***for production***
 
 ```html
-<script src="https://cdn.jsdelivr.net/npm/map-number@latest/dist/map.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/map-number@latest/dist/browser/map.umd.min.js"></script>
 ```
 
 > *for production you may want to replace the "latest" version for a specific one.*
@@ -31,13 +31,13 @@ npm i map-number
 ### unpkg
 
 ```html
-<script src="https://unpkg.com/map-number@latest/dist/map.umd.js"></script>
+<script src="https://unpkg.com/map-number@latest/dist/browser/map.umd.js"></script>
 ```
 
 ***for production***
 
 ```html
-<script src="https://unpkg.com/map-number@latest/dist/map.umd.min.js"></script>
+<script src="https://unpkg.com/map-number@latest/dist/browser/map.umd.min.js"></script>
 ```
 
 > *for production you may want to replace the "latest" version for a specific one.*
@@ -70,7 +70,7 @@ const result = mapNum.map(Math.sin(angle), -1, 1, 100, 0);
 
 ## API
 
-### map
+### `map`
 
 *Maps a number within a given range to a different range, returning a floating point number. The result **WILL NOT** be limited (clamped) to the the given output range.*
 
@@ -79,66 +79,66 @@ const result = mapNum.map(Math.sin(angle), -1, 1, 100, 0);
 ***syntax***
 
 ```typescript
-map: (
+function map(
   input: number,
   inputMin: number,
   inputMax: number,
   outputMin: number,
   outputMax: number,
-) => number;
+): number;
 ```
 
-### floor
+### `floor`
 
 *Maps a number within a given range to a different range, returning a number rounded **down** to the **previous** integer number. The result **WILL NOT** be limited (clamped) to the the given output range.*
 
 ***syntax***
 
 ```typescript
-floor: (
+function floor(
   input: number,
   inputMin: number,
   inputMax: number,
   outputMin: number,
   outputMax: number,
-) => number;
+): number;
 ```
 
-### ceil
+### `ceil`
 
 *Maps a number within a given range to a different range, returning a number rounded **up** to the **next** integer number. The result **WILL NOT** be limited (clamped) to the the given output range.*
 
 ***syntax***
 
 ```typescript
-ceil: (
+function ceil(
   input: number,
   inputMin: number,
   inputMax: number,
   outputMin: number,
   outputMax: number,
-) => number;
+): number;
 ```
 
-### round
+### `round`
 
 *Maps a number within a given range to a different range, returning a number **rounded** to the **closest** integer number. The result **WILL NOT** be limited (clamped) to the the given output range.*
 
 ***syntax***
 
 ```typescript
-round: (
+function round(
   input: number,
   inputMin: number,
   inputMax: number,
   outputMin: number,
   outputMax: number,
-) => number;
+): number;
 ```
 
 > *If you need to round to a specific number of decimal places, you can use the [`transformed`](#transformed) method and write your own round function.*
 
-### limit
+### `limit`
 
 ***alias: `clamp`***
 
@@ -147,16 +147,16 @@ round: (
 ***syntax***
 
 ```typescript
-limit: (
+function limit(
   input: number,
   inputMin: number,
   inputMax: number,
   outputMin: number,
   outputMax: number,
-) => number;
+): number;
 ```
 
-### compile
+### `compile`
 
 ***alias: `wrap`, `create`***
 
@@ -165,13 +165,13 @@ limit: (
 ***syntax***
 
 ```typescript
-compile: <O, I>(
+function compile<O, I>(
   map: MapFunction<O, I>,
   inputMin: number,
   inputMax: number,
   outputMin: number,
   outputMax: number,
-) => Compiled<O, I>;
+): Compiled<O, I>;
 
 type Compiled<O, I> = (input: I) => O;
 ```
@@ -194,7 +194,7 @@ map(0.33, -1, 1, 100, 0);
 map(0.5, -1, 1, 100, 0);
 ```
 
-### transformed
+### `transformed`
 
 ***alias: `transform`***
 
@@ -203,10 +203,10 @@ map(0.5, -1, 1, 100, 0);
 ***syntax***
 
 ```typescript
-transformed: <O, M, I>(
+function transformed<O, M, I>(
   map: MapFunction<I, M>,
   transform: Transformer<O, M>,
-) => MapFunction<O, I>;
+): MapFunction<O, I>;
 
 type Transformer<O, I> = (value: I, outputMin: number, outputMax: number) => O;
 ```
@@ -226,4 +226,4 @@ plusOne(0.4, 0, 1, 0, 100); // => 41 instead of 40
 
 ## License
 
-[MIT](LICENSE) &copy; [Manuel Fernández](https://github.com/manferlo81)
+[MIT](LICENSE) &copy; 2019-2024 [Manuel Fernández](https://github.com/manferlo81)

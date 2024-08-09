@@ -15,15 +15,18 @@
   ],
   "type": "commonjs",
   "exports": {
-    "import": "./dist/map.mjs",
-    "default": "./dist/map.cjs"
+    "types": "./dist/types/index.d.ts",
+    "import": "./dist/esm/index.mjs",
+    "require": "./dist/commonjs/index.cjs",
+    "node": "./dist/commonjs/index.cjs",
+    "default": "./dist/commonjs/index.cjs"
   },
-  "main": "./dist/map.cjs",
-  "module": "./dist/map.mjs",
-  "jsnext:main": "./dist/map.mjs",
-  "browser": "./dist/map.umd.js",
-  "types": "./dist/index.d.ts",
-  "typings": "./dist/index.d.ts",
+  "main": "./dist/commonjs/index.cjs",
+  "module": "./dist/esm/index.mjs",
+  "jsnext:main": "./dist/esm/index.mjs",
+  "browser": "./dist/browser/map.umd.js",
+  "types": "./dist/types/index.d.ts",
+  "typings": "./dist/types/index.d.ts",
   "scripts": {
     "clean:cache": "rimraf node_modules/.cache/{bundlib,jest}",
     "clean:build": "rimraf dist coverage",

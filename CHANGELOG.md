@@ -4,7 +4,6 @@
 
 ## [1.3.0](https://github.com/manferlo81/map-number/compare/v1.2.6...v1.3.0) (2020-05-10)
 
-
 ### Features
 
 * compile & clamp alias ([364987b](https://github.com/manferlo81/map-number/commit/364987ba21cffd5bae4b25de3c8b01f457b5a3c7))
