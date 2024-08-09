@@ -179,7 +179,7 @@ type Compiled<O, I> = (input: I) => O;
 ***example***
 
 ```javascript
-import { map, round, compile } from "map-number";
+import { map, compile } from "map-number";
 
 const myMap = compile(map, -1, 1, 100, 0);
 
@@ -211,6 +211,8 @@ function transformed<O, M, I>(
 type Transformer<O, I> = (value: I, outputMin: number, outputMax: number) => O;
 ```
 
+See [`MapFunction`](#mapfunction).
+
 ***example***
 
 ```javascript
@@ -223,6 +225,42 @@ const plusOne = transform(
 
 plusOne(0.4, 0, 1, 0, 100); // => 41 instead of 40
 ```
+
+## Types
+
+### `MapFunction`
+
+```typescript
+type MapFunction<O = number, I = number> = (value: I, inMin: number, inMax: number, outMin: number, outMax: number) => O;
+```
+
+### `CompiledMapFunction`
+
+```typescript
+type CompiledMapFunction<O = number, I = number> = (value: I) => O;
+```
+
+### `TransformFunction`
+
+```typescript
+type TransformFunction<O = number, I = number> = (value: I, outMin: number, outMax: number) => O;
+```
+
+### `MapNumberFunction`
+
+```typescript
+type MapNumberFunction = MapFunction;
+```
+
+See [`MapFunction`](#mapfunction)
+
+### `CompiledMapNumberFunction`
+
+```typescript
+type CompiledMapNumberFunction = CompiledMapFunction;
+```
+
+See [`CompiledMapFunction`](#compiledmapfunction)
 
 ## License
 
