@@ -65,34 +65,37 @@ commands:
           name: Publish to npm
           command: npm publish
 
-  command_ci:
-    steps:
-      - command_checkout_cache_install
-      - command_test_and_build
-
 jobs:
   job_node_16_test_and_build:
     description: Test and Build on NodeJS 16
     executor: executor_node_16
     steps:
-      - command_ci
-      - command_save_workspace
+      - command_checkout_cache_install
+      - run:
+          name: Run Tests
+          command: npm test
+      # - run:
+      #     name: Build
+      #     command: npm run build
 
   job_node_18_test_and_build:
     description: Test and Build on NodeJS 18
     executor: executor_node_18
     steps:
-      - command_ci
+      - command_checkout_cache_install
+      - command_test_and_build
 
   job_node_20_test_and_build:
     description: Test and Build on NodeJS 20
     executor: executor_node_20
     steps:
-      - command_ci
+      - command_checkout_cache_install
+      - command_test_and_build
+      - command_save_workspace
 
   job_upload_coverage:
     description: Upload coverage to Codecov
-    executor: executor_node_16
+    executor: executor_node_20
     steps:
       - command_restore_workspace
       - codecov/upload:
@@ -100,7 +103,7 @@ jobs:
 
   job_publish_to_npm:
     description: Publish package to npm
-    executor: executor_node_16
+    executor: executor_node_20
     steps:
       - command_restore_workspace
       - command_publish_to_npm
