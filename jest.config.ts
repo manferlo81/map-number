@@ -1,4 +1,4 @@
-import { Config as JestConfig } from "jest";
+import { Config as JestConfig } from 'jest';
 
 const config: JestConfig = {
   testEnvironment: 'node',

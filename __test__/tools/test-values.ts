@@ -12,7 +12,7 @@ export function expectValues<T>(
   b: number,
   c: number,
   d: number,
-  method: 'toBeCloseTo' | 'toBe' = 'toBeCloseTo'
+  method: 'toBeCloseTo' | 'toBe' = 'toBeCloseTo',
 ): void {
   values.forEach(({ value, expected }) => {
     expect(func(value, a, b, c, d))[method](expected as never, 8);

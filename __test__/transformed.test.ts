@@ -44,7 +44,7 @@ describe('"transform" method', () => {
         fakeMapFunction,
         (n) => `$ ${n}`,
       ),
-      (s) => `-${s}`
+      (s) => `-${s}`,
     );
 
     expectValues([10, 0.5, 2.2, 8].map((value) => ({
