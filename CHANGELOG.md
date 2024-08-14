@@ -2,7 +2,9 @@
 
 ## Version History
 
-## [1.3.0](https://github.com/manferlo81/map-number/compare/v1.2.6...v1.3.0) (2020-05-10)
+### [1.3.1](https://github.com/manferlo81/map-number/compare/v1.3.0...v1.3.1) (2024-08-14)
+
+### [1.3.0](https://github.com/manferlo81/map-number/compare/v1.2.6...v1.3.0) (2020-05-10)
 
 ### Features
 
