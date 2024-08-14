@@ -16,6 +16,8 @@ const stylisticRules = pluginRules('@stylistic', {
   'quote-props': rule('as-needed'),
   'arrow-parens': rule('always'),
   'member-delimiter-style': rule({}),
+  'no-extra-parens': rule('all'),
+  'no-extra-semi': 'error',
   'padded-blocks': 'off',
 });
 
