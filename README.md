@@ -26,8 +26,22 @@
 
 ## Install
 
+### using npm
+
 ```bash
-npm i map-number
+npm install map-number
+```
+
+### using yarn
+
+```bash
+yarn add map-number
+```
+
+### using pnpm
+
+```bash
+pnpm add map-number
 ```
 
 ## CDN
@@ -35,13 +49,13 @@ npm i map-number
 ### jsDelivr
 
 ```html
-<script src="https://cdn.jsdelivr.net/npm/map-number@latest/dist/browser/map.umd.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/map-number@latest/dist/umd/map.js"></script>
 ```
 
 ***for production***
 
 ```html
-<script src="https://cdn.jsdelivr.net/npm/map-number@latest/dist/browser/map.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/map-number@latest/dist/umd/map.min.js"></script>
 ```
 
 > *for production you may want to replace the "latest" version for a specific one.*
@@ -51,13 +65,13 @@ npm i map-number
 ### unpkg
 
 ```html
-<script src="https://unpkg.com/map-number@latest/dist/browser/map.umd.js"></script>
+<script src="https://unpkg.com/map-number@latest/dist/umd/map.js"></script>
 ```
 
 ***for production***
 
 ```html
-<script src="https://unpkg.com/map-number@latest/dist/browser/map.umd.min.js"></script>
+<script src="https://unpkg.com/map-number@latest/dist/umd/map.min.js"></script>
 ```
 
 > *for production you may want to replace the "latest" version for a specific one.*
