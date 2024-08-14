@@ -11,6 +11,11 @@ const pluginRules = (pluginName, rules) => Object.keys(rules).reduce((output, ru
   return { ...output, [pluginRuleName]: value };
 }, {});
 
+const eslintRules = {
+  'no-useless-rename': 'error',
+  'object-shorthand': 'error',
+};
+
 const stylisticRules = pluginRules('@stylistic', {
   semi: rule('always'),
   'quote-props': rule('as-needed'),
@@ -38,5 +43,5 @@ export default config(
   js.configs.recommended,
   ...typescriptConfig,
   stylistic.configs['recommended-flat'],
-  { rules: { ...stylisticRules, ...typescriptRules } },
+  { rules: { ...eslintRules, ...stylisticRules, ...typescriptRules } },
 );
