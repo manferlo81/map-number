@@ -18,6 +18,7 @@ const eslintRules = {
 
 const stylisticRules = pluginRules('@stylistic', {
   semi: rule('always'),
+  'linebreak-style': rule('unix'),
   'quote-props': rule('as-needed'),
   'arrow-parens': rule('always'),
   'member-delimiter-style': rule({}),
