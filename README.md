@@ -12,6 +12,8 @@
 [![Known Vulnerabilities](https://snyk.io/test/github/manferlo81/map-number/badge.svg?targetFile=package.json)](https://snyk.io/test/github/manferlo81/map-number?targetFile=package.json)
 [![license](https://badgen.net/github/license/manferlo81/map-number)](LICENSE)
 
+processing/p5.js map like function, including floating point numbers support
+
 > :warning: this `map` function has nothing to do with `Array.prototype.map` method.
 
 ## In this guide
