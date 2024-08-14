@@ -4,6 +4,26 @@
 
 > :warning: this `map` function has nothing to do with `Array.prototype.map` method.
 
+## In this guide
+
+* [Install](#install)
+* [CDN](#cdn)
+* [Usage](#usage)
+* [API](#api)
+  * [function `map`](#function-map)
+  * [function `floor`](#function-floor)
+  * [function `ceil`](#function-ceil)
+  * [function `round`](#function-round)
+  * [function `limit`](#function-limit)
+  * [function `compile`](#function-compile)
+  * [function `transformed`](#function-transformed)
+* [Types](#types)
+  * [type `MapFunction`](#type-mapfunction)
+  * [type `CompiledMapFunction`](#type-compiledmapfunction)
+  * [type `TransformFunction`](#type-transformfunction)
+  * [type `MapNumberFunction`](#type-mapnumberfunction)
+  * [type `CompiledMapNumberFunction`](#type-compiledmapnumberfunction)
+
 ## Install
 
 ```bash
@@ -70,13 +90,13 @@ const result = mapNum.map(Math.sin(angle), -1, 1, 100, 0);
 
 ## API
 
-### `map`
+### function `map`
 
 *Maps a number within a given range to a different range, returning a floating point number. The result **WILL NOT** be limited (clamped) to the the given output range.*
 
 *This is the core function and all other map function variants depend on it.*
 
-***syntax***
+* ***syntax***
 
 ```typescript
 function map(
@@ -88,7 +108,13 @@ function map(
 ): number;
 ```
 
-### `floor`
+* ***example***
+
+```typescript
+map(4, 0, 10, 0, 100); // => returns 40
+```
+
+### function `floor`
 
 *Maps a number within a given range to a different range, returning a number rounded **down** to the **previous** integer number. The result **WILL NOT** be limited (clamped) to the the given output range.*
 
@@ -104,7 +130,7 @@ function floor(
 ): number;
 ```
 
-### `ceil`
+### function `ceil`
 
 *Maps a number within a given range to a different range, returning a number rounded **up** to the **next** integer number. The result **WILL NOT** be limited (clamped) to the the given output range.*
 
@@ -120,7 +146,7 @@ function ceil(
 ): number;
 ```
 
-### `round`
+### function `round`
 
 *Maps a number within a given range to a different range, returning a number **rounded** to the **closest** integer number. The result **WILL NOT** be limited (clamped) to the the given output range.*
 
@@ -136,9 +162,9 @@ function round(
 ): number;
 ```
 
-> *If you need to round to a specific number of decimal places, you can use the [`transformed`](#transformed) method and write your own round function.*
+> *If you need to round to a specific number of decimal places, you can use the [`transformed`](#function-transformed) method and write your own round function.*
 
-### `limit`
+### function `limit`
 
 ***alias: `clamp`***
 
@@ -156,11 +182,11 @@ function limit(
 ): number;
 ```
 
-### `compile`
+### function `compile`
 
 ***alias: `wrap`, `create`***
 
-*Creates a single argument function implementing the given [`map`](#map), [`floor`](#floor), [`ceil`](#ceil), [`round`](#round), [`limit`](#limit), [`clamp`](#limit) or user created function. Useful when you need to map values multiple times within the same range, see example below.*
+*Creates a single argument function implementing the given [`map`](#function-map), [`floor`](#function-floor), [`ceil`](#function-ceil), [`round`](#function-round), [`limit`](#function-limit), [`clamp`](#function-limit) or user created function. Useful when you need to map values multiple times within the same range, see example below.*
 
 ***syntax***
 
@@ -171,10 +197,10 @@ function compile<O, I>(
   inputMax: number,
   outputMin: number,
   outputMax: number,
-): Compiled<O, I>;
-
-type Compiled<O, I> = (input: I) => O;
+): CompiledMapFunction<O, I>;
 ```
+
+See [`MapFunction`](#type-mapfunction) and [`CompiledMapFunction`](#type-compiledmapfunction).
 
 ***example***
 
@@ -185,33 +211,31 @@ const myMap = compile(map, -1, 1, 100, 0);
 
 myMap(-0.2);
 myMap(0.33);
-myMap(0.5);
+myMap(0.51);
 
 // ... is equivalent to...
 
 map(-0.2, -1, 1, 100, 0);
 map(0.33, -1, 1, 100, 0);
-map(0.5, -1, 1, 100, 0);
+map(0.51, -1, 1, 100, 0);
 ```
 
-### `transformed`
+### function `transformed`
 
 ***alias: `transform`***
 
-*Creates a map function where the result of the given function is transformed to a different value. This method is used internally to create the [`floor`](#floor), [`ceil`](#ceil) and [`round`](#round) methods.*
+*Creates a map function where the result of the given function is transformed to a different value. This method is used internally to create the [`floor`](#function-floor), [`ceil`](#function-ceil) and [`round`](#function-round) methods.*
 
 ***syntax***
 
 ```typescript
-function transformed<O, M, I>(
-  map: MapFunction<I, M>,
-  transform: Transformer<O, M>,
+function transformed<O = number, M = number, I = number>(
+  map: MapFunction<M, I>,
+  transform: TransformFunction<M, O>,
 ): MapFunction<O, I>;
-
-type Transformer<O, I> = (value: I, outputMin: number, outputMax: number) => O;
 ```
 
-See [`MapFunction`](#mapfunction).
+See [`MapFunction`](#type-mapfunction) and [`TransformFunction`](#type-transformfunction).
 
 ***example***
 
@@ -228,39 +252,39 @@ plusOne(0.4, 0, 1, 0, 100); // => 41 instead of 40
 
 ## Types
 
-### `MapFunction`
+### type `MapFunction`
 
 ```typescript
 type MapFunction<O = number, I = number> = (value: I, inMin: number, inMax: number, outMin: number, outMax: number) => O;
 ```
 
-### `CompiledMapFunction`
+### type `CompiledMapFunction`
 
 ```typescript
 type CompiledMapFunction<O = number, I = number> = (value: I) => O;
 ```
 
-### `TransformFunction`
+### type `TransformFunction`
 
 ```typescript
-type TransformFunction<O = number, I = number> = (value: I, outMin: number, outMax: number) => O;
+type TransformFunction<I = number, O = number> = (value: I) => O;
 ```
 
-### `MapNumberFunction`
+### type `MapNumberFunction`
 
 ```typescript
-type MapNumberFunction = MapFunction;
+type MapNumberFunction = MapFunction<number, number>;
 ```
 
-See [`MapFunction`](#mapfunction)
+See [`MapFunction`](#type-mapfunction)
 
-### `CompiledMapNumberFunction`
+### type `CompiledMapNumberFunction`
 
 ```typescript
-type CompiledMapNumberFunction = CompiledMapFunction;
+type CompiledMapNumberFunction = CompiledMapFunction<number, number>;
 ```
 
-See [`CompiledMapFunction`](#compiledmapfunction)
+See [`CompiledMapFunction`](#type-compiledmapfunction)
 
 ## License
 

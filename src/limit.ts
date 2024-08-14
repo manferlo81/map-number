@@ -1,20 +1,18 @@
 import { map } from './map';
-import { transformed } from './transform';
 
-export const limit = transformed(
-  map,
-  (result, outMin, outMax) => {
+export function limit(num: number, inMin: number, inMax: number, outMin: number, outMax: number): number {
 
-    let boundMin = outMin;
-    let boundMax = outMax;
+  const result = map(num, inMin, inMax, outMin, outMax);
 
-    if (boundMax < boundMin) {
-      const temp = boundMin;
-      boundMin = boundMax;
-      boundMax = temp;
-    }
+  let boundMin = outMin;
+  let boundMax = outMax;
 
-    return result > boundMax ? boundMax : result < boundMin ? boundMin : result;
+  if (boundMax < boundMin) {
+    const temp = boundMin;
+    boundMin = boundMax;
+    boundMax = temp;
+  }
 
-  },
-);
+  return result > boundMax ? boundMax : result < boundMin ? boundMin : result;
+
+}
