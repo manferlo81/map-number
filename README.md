@@ -1,6 +1,16 @@
 # map-number
 
-[![CircleCI](https://circleci.com/gh/manferlo81/map-number.svg?style=svg)](https://circleci.com/gh/manferlo81/map-number) [![npm](https://badgen.net/npm/v/map-number)](https://www.npmjs.com/package/map-number) [![codecov](https://codecov.io/gh/manferlo81/map-number/branch/master/graph/badge.svg)](https://codecov.io/gh/manferlo81/map-number) [![jsDelivr](https://data.jsdelivr.com/v1/package/npm/map-number/badge?style=rounded)](https://www.jsdelivr.com/package/npm/map-number) [![dependencies](https://badgen.net/david/dep/manferlo81/map-number)](https://david-dm.org/manferlo81/map-number) [![dev dependencies](https://badgen.net/david/dev/manferlo81/map-number)](https://david-dm.org/manferlo81/map-number?type=dev) [![packagephobia](https://badgen.net/packagephobia/install/map-number)](https://packagephobia.now.sh/result?p=map-number) [![bundlephobia](https://badgen.net/bundlephobia/min/map-number)](https://bundlephobia.com/result?p=map-number) [![types](https://img.shields.io/npm/types/map-number.svg)](https://github.com/microsoft/typescript) [![Known Vulnerabilities](https://snyk.io/test/github/manferlo81/map-number/badge.svg?targetFile=package.json)](https://snyk.io/test/github/manferlo81/map-number?targetFile=package.json) [![license](https://badgen.net/github/license/manferlo81/map-number)](LICENSE)
+[![CircleCI](https://circleci.com/gh/manferlo81/map-number.svg?style=svg)](https://circleci.com/gh/manferlo81/map-number)
+[![npm](https://badgen.net/npm/v/map-number)](https://www.npmjs.com/package/map-number)
+[![codecov](https://codecov.io/gh/manferlo81/map-number/branch/main/graph/badge.svg)](https://codecov.io/gh/manferlo81/map-number)
+[![jsDelivr](https://data.jsdelivr.com/v1/package/npm/map-number/badge?style=rounded)](https://www.jsdelivr.com/package/npm/map-number)
+[![dependencies](https://badgen.net/david/dep/manferlo81/map-number)](https://david-dm.org/manferlo81/map-number)
+[![dev dependencies](https://badgen.net/david/dev/manferlo81/map-number)](https://david-dm.org/manferlo81/map-number?type=dev)
+[![packagephobia](https://badgen.net/packagephobia/install/map-number)](https://packagephobia.now.sh/result?p=map-number)
+[![bundlephobia](https://badgen.net/bundlephobia/min/map-number)](https://bundlephobia.com/result?p=map-number)
+[![types](https://img.shields.io/npm/types/map-number.svg)](https://github.com/microsoft/typescript)
+[![Known Vulnerabilities](https://snyk.io/test/github/manferlo81/map-number/badge.svg?targetFile=package.json)](https://snyk.io/test/github/manferlo81/map-number?targetFile=package.json)
+[![license](https://badgen.net/github/license/manferlo81/map-number)](LICENSE)
 
 > :warning: this `map` function has nothing to do with `Array.prototype.map` method.
 
