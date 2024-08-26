@@ -27,7 +27,7 @@
   "browser": "./dist/umd/map.js",
   "types": "./dist/types/index.d.ts",
   "typings": "./dist/types/index.d.ts",
-  "bundlib": "./bundlib.config.ts",
+  "bundlib": "./bundlib.config.mjs",
   "scripts": {
     "clean:cache": "rimraf --glob node_modules/.cache/{bundlib,jest}",
     "clean:build": "rimraf dist coverage",
@@ -63,7 +63,6 @@
     "rimraf": "^6.0.1",
     "standard-version": "^9.5.0",
     "ts-jest": "^29.2.5",
-    "ts-node": "^10.9.2",
     "typescript": "^5.5.4",
     "typescript-eslint": "^8.2.0"
   },

@@ -1,7 +1,5 @@
-import { Config as JestConfig } from 'jest';
-
-const config: JestConfig = {
-  testEnvironment: 'node',
+/** @type { import("jest").Config } */
+const config = {
   cacheDirectory: 'node_modules/.cache/jest',
   preset: 'ts-jest',
 

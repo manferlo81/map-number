@@ -15,9 +15,7 @@
   },
   "include": [
     "src",
-    "__test__",
-    "jest.config.ts",
-    "bundlib.config.ts"
+    "__test__"
   ],
   "exclude": [
     "node_modules"
