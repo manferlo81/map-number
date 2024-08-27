@@ -4,19 +4,24 @@ orbs:
   codecov: codecov/codecov@4.1.0
 
 executors:
-  executor_node_16:
-    docker:
-      - image: cimg/node:16.20
-    working_directory: ~/map-number
-
   executor_node_18:
     docker:
-      - image: cimg/node:18.20
+      - image: cimg/node:18.20.4
     working_directory: ~/map-number
 
   executor_node_20:
     docker:
-      - image: cimg/node:20.15
+      - image: cimg/node:20.17.0
+    working_directory: ~/map-number
+
+  executor_node_21:
+    docker:
+      - image: cimg/node:21.7.3
+    working_directory: ~/map-number
+
+  executor_node_22:
+    docker:
+      - image: cimg/node:22.7.0
     working_directory: ~/map-number
 
 commands:
@@ -34,6 +39,12 @@ commands:
           key: v2-deps-map-number-{{ checksum "package-lock.json" }}
           paths:
             - node_modules
+
+  command_lint:
+    steps:
+      - run:
+          name: Lint Code
+          command: npm run lint
 
   command_test_and_build:
     steps:
@@ -66,17 +77,13 @@ commands:
           command: npm publish
 
 jobs:
-  job_node_16_test_and_build:
-    description: Test and Build on NodeJS 16
-    executor: executor_node_16
+  job_lint:
+    description: Lint Code
+    executor: executor_node_20
     steps:
       - command_checkout_cache_install
-      - run:
-          name: Run Tests
-          command: npm test
-      # - run:
-      #     name: Build
-      #     command: npm run build
+      - command_lint
+      - command_save_workspace
 
   job_node_18_test_and_build:
     description: Test and Build on NodeJS 18
@@ -89,9 +96,23 @@ jobs:
     description: Test and Build on NodeJS 20
     executor: executor_node_20
     steps:
-      - command_checkout_cache_install
+      - command_restore_workspace
       - command_test_and_build
       - command_save_workspace
+
+  job_node_21_test_and_build:
+    description: Test and Build on NodeJS 21
+    executor: executor_node_21
+    steps:
+      - command_checkout_cache_install
+      - command_test_and_build
+
+  job_node_22_test_and_build:
+    description: Test and Build on NodeJS 22
+    executor: executor_node_22
+    steps:
+      - command_checkout_cache_install
+      - command_test_and_build
 
   job_upload_coverage:
     description: Upload coverage to Codecov
@@ -111,7 +132,7 @@ jobs:
 workflows:
   workflow_ci:
     jobs:
-      - job_node_16_test_and_build:
+      - job_lint:
           filters:
             tags:
               only: /.*/
@@ -119,6 +140,8 @@ workflows:
               only: /.*/
 
       - job_node_18_test_and_build:
+          requires:
+            - job_lint
           filters:
             tags:
               only: /.*/
@@ -126,6 +149,26 @@ workflows:
               only: /.*/
 
       - job_node_20_test_and_build:
+          requires:
+            - job_lint
+          filters:
+            tags:
+              only: /.*/
+            branches:
+              only: /.*/
+
+      - job_node_21_test_and_build:
+          requires:
+            - job_lint
+          filters:
+            tags:
+              only: /.*/
+            branches:
+              only: /.*/
+
+      - job_node_22_test_and_build:
+          requires:
+            - job_lint
           filters:
             tags:
               only: /.*/
@@ -134,9 +177,10 @@ workflows:
 
       - job_upload_coverage:
           requires:
-            - job_node_16_test_and_build
             - job_node_18_test_and_build
             - job_node_20_test_and_build
+            - job_node_21_test_and_build
+            - job_node_22_test_and_build
           filters:
             branches:
               only: /main/
@@ -144,9 +188,10 @@ workflows:
       - job_publish_to_npm:
           context: npm
           requires:
-            - job_node_16_test_and_build
             - job_node_18_test_and_build
             - job_node_20_test_and_build
+            - job_node_21_test_and_build
+            - job_node_22_test_and_build
           filters:
             tags:
               only: /^v\d+\.\d+\.\d+$/
