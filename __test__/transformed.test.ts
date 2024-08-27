@@ -1,56 +1,66 @@
-import { MapFunction, transform } from '../src';
-import { expectValues } from './tools/test-values';
+import { MapNumberFunction, transform } from '../src';
 
 describe('"transform" method', () => {
 
   test('Should transform map function output', () => {
 
-    const fakeMapFunction: MapFunction = (n) => n;
+    const returnInput: MapNumberFunction = (n) => n;
 
     const mapPlusOne = transform(
-      fakeMapFunction,
+      returnInput,
       (n) => n + 1,
     );
 
-    expectValues([10, 0.5, 2.2, 8].map((value) => ({
-      value,
-      expected: value + 1,
-    })), mapPlusOne, 0, 0, 0, 0);
+    const values = [10, 0.5, 2.2, 8];
+
+    values.forEach((value) => {
+      const result = mapPlusOne(value, 0, 0, 0, 0);
+      const expected = value + 1;
+      expect(result).toBeCloseTo(expected);
+    });
 
   });
 
   test('Should transform map function output to a non number value', () => {
 
-    const fakeMapFunction: MapFunction = (n) => n;
+    const returnInput: MapNumberFunction = (n) => n;
 
-    const mapPlusOne = transform(
-      fakeMapFunction,
-      (n) => `$ ${n}`,
+    const dollarMap = transform(
+      returnInput,
+      (amount) => `$ ${amount}`,
     );
 
-    expectValues([10, 0.5, 2.2, 8].map((value) => ({
-      value,
-      expected: `$ ${value}`,
-    })), mapPlusOne, 0, 0, 0, 0, 'toBe');
+    const values = [10, 0.5, 2.2, 8];
+
+    values.forEach((value) => {
+      const result = dollarMap(value, 0, 0, 0, 0);
+      const expected = `$ ${value}`;
+      expect(result).toBe(expected);
+    });
 
   });
 
   test('Should chain transform map function output', () => {
 
-    const fakeMapFunction: MapFunction = (n) => n;
+    const returnInput: MapNumberFunction = (n) => n;
 
-    const mapPlusOne = transform(
-      transform(
-        fakeMapFunction,
-        (n) => `$ ${n}`,
-      ),
-      (s) => `-${s}`,
+    const dollarMap = transform(
+      returnInput,
+      (amount) => `$ ${amount}`,
     );
 
-    expectValues([10, 0.5, 2.2, 8].map((value) => ({
-      value,
-      expected: `-$ ${value}`,
-    })), mapPlusOne, 0, 0, 0, 0, 'toBe');
+    const negativeDollarMap = transform(
+      dollarMap,
+      (dollar) => `-${dollar}`,
+    );
+
+    const values = [10, 0.5, 2.2, 8];
+
+    values.forEach((value) => {
+      const result = negativeDollarMap(value, 0, 0, 0, 0);
+      const expected = `-$ ${value}`;
+      expect(result).toBe(expected);
+    });
 
   });
 

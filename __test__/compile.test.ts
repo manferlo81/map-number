@@ -14,7 +14,9 @@ describe('"compile" method', () => {
     ];
 
     values.forEach((value) => {
-      expect(compiled(value)).toBe(map(value, ...boundaries));
+      const valueFromCompiled = compiled(value);
+      const valueFromMapFunction = map(value, ...boundaries);
+      expect(valueFromCompiled).toBe(valueFromMapFunction);
     });
 
   });

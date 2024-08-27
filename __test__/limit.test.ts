@@ -1,43 +1,54 @@
 import { limit } from '../src';
-import { expectValues } from './tools/test-values';
 
 describe('"limit" method', () => {
 
   test('Should return in-range output', () => {
-    expectValues([
+    const cases = [
       { value: 20, expected: 2 },
       { value: 33, expected: 3.3 },
       { value: 39, expected: 3.9 },
       { value: 50, expected: 5 },
-    ], limit, 20, 50, 2, 5);
+    ];
+    cases.forEach(({ value, expected }) => {
+      expect(limit(value, 20, 50, 2, 5)).toBeCloseTo(expected);
+    });
   });
 
   test('Should limit output', () => {
-    expectValues([
+    const cases = [
       { value: 1, expected: 20 },
       { value: 1.9, expected: 20 },
       { value: 6.1, expected: 50 },
       { value: 6, expected: 50 },
-    ], limit, 2, 5, 20, 50);
+    ];
+    cases.forEach(({ value, expected }) => {
+      expect(limit(value, 2, 5, 20, 50)).toBeCloseTo(expected);
+    });
   });
 
   test('Should limit inverted output', () => {
-    expectValues([
+    const cases = [
       { value: -0.5, expected: 9 },
       { value: 1, expected: 9 },
       { value: 3.1, expected: 6.9 },
       { value: 9, expected: 1 },
       { value: 10.5, expected: 1 },
-    ], limit, 1, 9, 9, 1);
+    ];
+    cases.forEach(({ value, expected }) => {
+      expect(limit(value, 1, 9, 9, 1)).toBeCloseTo(expected);
+    });
   });
 
   test('Should return non integer output', () => {
-    expectValues([
+    const cases = [
       { value: 9.9, expected: 1 },
       { value: 33.1, expected: 3.31 },
       { value: 55.3, expected: 5.53 },
       { value: 90.1, expected: 9 },
-    ], limit, 10, 90, 1, 9);
+    ];
+    cases.forEach(({ value, expected }) => {
+      expect(limit(value, 10, 90, 1, 9)).toBeCloseTo(expected);
+    });
   });
 
 });
