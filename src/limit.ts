@@ -1,18 +1,11 @@
 import { map } from './map';
+import { max, min } from './math';
 
 export function limit(num: number, inMin: number, inMax: number, outMin: number, outMax: number): number {
-
+  const boundMin = min(outMin, outMax);
+  const boundMax = max(outMin, outMax);
   const result = map(num, inMin, inMax, outMin, outMax);
-
-  let boundMin = outMin;
-  let boundMax = outMax;
-
-  if (boundMax < boundMin) {
-    const temp = boundMin;
-    boundMin = boundMax;
-    boundMax = temp;
-  }
-
-  return result > boundMax ? boundMax : result < boundMin ? boundMin : result;
-
+  if (result < boundMin) return boundMin;
+  if (result > boundMax) return boundMax;
+  return result;
 }
