@@ -2,7 +2,7 @@
   "compilerOptions": {
     "lib": [],
     "target": "ESNext",
-    "module": "ESNext",
+    "module": "CommonJS",
     "moduleResolution": "Node10",
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
@@ -16,8 +16,7 @@
     "declaration": true,
     "declarationMap": true,
     "importHelpers": true,
-    "newLine": "lf",
-    "pretty": true,
+    "newLine": "lf"
   },
   "include": [
     "src",
