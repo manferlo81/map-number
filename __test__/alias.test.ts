@@ -1,4 +1,4 @@
-import { compile, create, wrap, limit, clamp, transform, transformed } from '../src';
+import { clamp, compile, create, limit, transform, transformed, wrap } from '../src';
 
 describe('alias', () => {
 

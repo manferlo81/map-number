@@ -3,6 +3,7 @@ import { map } from '../src';
 describe('"map" method', () => {
 
   test('Should return in-range output', () => {
+    const mapValue = (value: number) => map(value, 2, 5, 20, 50);
     const cases = [
       { value: 2, expected: 20 },
       { value: 3, expected: 30 },
@@ -12,11 +13,12 @@ describe('"map" method', () => {
       { value: 5, expected: 50 },
     ];
     cases.forEach(({ value, expected }) => {
-      expect(map(value, 2, 5, 20, 50)).toBeCloseTo(expected);
+      expect(mapValue(value)).toBeCloseTo(expected);
     });
   });
 
   test('Should return out-range output', () => {
+    const mapValue = (value: number) => map(value, 2, 5, 20, 50);
     const cases = [
       { value: 1, expected: 10 },
       { value: 1.1, expected: 11 },
@@ -24,11 +26,12 @@ describe('"map" method', () => {
       { value: 6, expected: 60 },
     ];
     cases.forEach(({ value, expected }) => {
-      expect(map(value, 2, 5, 20, 50)).toBeCloseTo(expected);
+      expect(mapValue(value)).toBeCloseTo(expected);
     });
   });
 
   test('Should invert in-range output', () => {
+    const mapValue = (value: number) => map(value, 1, 9, 9, 1);
     const cases = [
       { value: 2.1, expected: 7.9 },
       { value: 3, expected: 7 },
@@ -36,11 +39,12 @@ describe('"map" method', () => {
       { value: 8.8, expected: 1.2 },
     ];
     cases.forEach(({ value, expected }) => {
-      expect(map(value, 1, 9, 9, 1)).toBeCloseTo(expected);
+      expect(mapValue(value)).toBeCloseTo(expected);
     });
   });
 
   test('Should invert out-range output', () => {
+    const mapValue = (value: number) => map(value, 1, 9, 9, 1);
     const cases = [
       { value: 0, expected: 10 },
       { value: -0, expected: 10 },
@@ -49,11 +53,12 @@ describe('"map" method', () => {
       { value: 10, expected: 0 },
     ];
     cases.forEach(({ value, expected }) => {
-      expect(map(value, 1, 9, 9, 1)).toBeCloseTo(expected);
+      expect(mapValue(value)).toBeCloseTo(expected);
     });
   });
 
   test('Should return non integer output', () => {
+    const mapValue = (value: number) => map(value, 10, 90, 1, 9);
     const cases = [
       { value: 12.7, expected: 1.27 },
       { value: 33.1, expected: 3.31 },
@@ -61,7 +66,7 @@ describe('"map" method', () => {
       { value: 86.1, expected: 8.61 },
     ];
     cases.forEach(({ value, expected }) => {
-      expect(map(value, 10, 90, 1, 9)).toBeCloseTo(expected);
+      expect(mapValue(value)).toBeCloseTo(expected);
     });
   });
 

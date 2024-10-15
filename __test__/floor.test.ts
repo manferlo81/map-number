@@ -3,6 +3,7 @@ import { floor } from '../src';
 describe('"floor" method', () => {
 
   test('Should return in-range output', () => {
+    const floorValue = (value: number) => floor(value, 20, 50, 2, 5);
     const cases = [
       { value: 20, expected: 2 },
       { value: 50, expected: 5 },
@@ -12,11 +13,12 @@ describe('"floor" method', () => {
       { value: 40, expected: 4 },
     ];
     cases.forEach(({ value, expected }) => {
-      expect(floor(value, 20, 50, 2, 5)).toBeCloseTo(expected);
+      expect(floorValue(value)).toBeCloseTo(expected);
     });
   });
 
   test('Should return out-range output', () => {
+    const floorValue = (value: number) => floor(value, 20, 50, 2, 5);
     const cases = [
       { value: 4, expected: 0 },
       { value: 6, expected: 0 },
@@ -24,11 +26,12 @@ describe('"floor" method', () => {
       { value: 66, expected: 6 },
     ];
     cases.forEach(({ value, expected }) => {
-      expect(floor(value, 20, 50, 2, 5)).toBeCloseTo(expected);
+      expect(floorValue(value)).toBeCloseTo(expected);
     });
   });
 
   test('Should invert in-range output', () => {
+    const floorValue = (value: number) => floor(value, 1, 9, 9, 1);
     const cases = [
       { value: 1, expected: 9 },
       { value: 4, expected: 6 },
@@ -38,11 +41,12 @@ describe('"floor" method', () => {
       { value: 9, expected: 1 },
     ];
     cases.forEach(({ value, expected }) => {
-      expect(floor(value, 1, 9, 9, 1)).toBeCloseTo(expected);
+      expect(floorValue(value)).toBeCloseTo(expected);
     });
   });
 
   test('Should invert out-range output', () => {
+    const floorValue = (value: number) => floor(value, 1, 9, 9, 1);
     const cases = [
       { value: 0, expected: 10 },
       { value: -0, expected: 10 },
@@ -51,7 +55,7 @@ describe('"floor" method', () => {
       { value: 10.9, expected: -1 },
     ];
     cases.forEach(({ value, expected }) => {
-      expect(floor(value, 1, 9, 9, 1)).toBeCloseTo(expected);
+      expect(floorValue(value)).toBeCloseTo(expected);
     });
   });
 

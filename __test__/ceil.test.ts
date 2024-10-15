@@ -3,6 +3,7 @@ import { ceil } from '../src';
 describe('"ceil" method', () => {
 
   test('Should return in-range output', () => {
+    const ceilValue = (value: number) => ceil(value, 20, 50, 2, 5);
     const cases = [
       { value: 20, expected: 2 },
       { value: 50, expected: 5 },
@@ -12,11 +13,12 @@ describe('"ceil" method', () => {
       { value: 40, expected: 4 },
     ];
     cases.forEach(({ value, expected }) => {
-      expect(ceil(value, 20, 50, 2, 5)).toBeCloseTo(expected);
+      expect(ceilValue(value)).toBeCloseTo(expected);
     });
   });
 
   test('Should return out-range output', () => {
+    const ceilValue = (value: number) => ceil(value, 20, 50, 2, 5);
     const cases = [
       { value: 0, expected: 0 },
       { value: -2, expected: 0 },
@@ -27,11 +29,12 @@ describe('"ceil" method', () => {
       { value: 66, expected: 7 },
     ];
     cases.forEach(({ value, expected }) => {
-      expect(ceil(value, 20, 50, 2, 5)).toBeCloseTo(expected);
+      expect(ceilValue(value)).toBeCloseTo(expected);
     });
   });
 
   test('Should invert in-range output', () => {
+    const ceilValue = (value: number) => ceil(value, 1, 9, 9, 1);
     const cases = [
       { value: 1, expected: 9 },
       { value: 3.1, expected: 7 },
@@ -39,11 +42,12 @@ describe('"ceil" method', () => {
       { value: 9, expected: 1 },
     ];
     cases.forEach(({ value, expected }) => {
-      expect(ceil(value, 1, 9, 9, 1)).toBeCloseTo(expected);
+      expect(ceilValue(value)).toBeCloseTo(expected);
     });
   });
 
   test('Should invert out-range output', () => {
+    const ceilValue = (value: number) => ceil(value, 1, 9, 9, 1);
     const cases = [
       { value: -1.3, expected: 12 },
       { value: -1.9, expected: 12 },
@@ -51,7 +55,7 @@ describe('"ceil" method', () => {
       { value: 10.9, expected: 0 },
     ];
     cases.forEach(({ value, expected }) => {
-      expect(ceil(value, 1, 9, 9, 1)).toBeCloseTo(expected);
+      expect(ceilValue(value)).toBeCloseTo(expected);
     });
   });
 
