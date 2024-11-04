@@ -39,6 +39,7 @@ const eslintRules = normalizeRules({
 
 const stylisticRules = normalizeRules('@stylistic', {
   indent: 2,
+  quotes: 'single',
   'linebreak-style': 'unix',
   'no-extra-parens': 'all',
   'no-extra-semi': 'error',
@@ -52,7 +53,6 @@ const typescriptRules = normalizeRules('@typescript-eslint', {
 const stylisticConfig = stylistic.configs.customize({
   semi: true,
   arrowParens: true,
-  quotes: 'single',
   quoteProps: 'as-needed',
   braceStyle: '1tbs',
 });
@@ -61,11 +61,11 @@ const typescriptConfig = config(
   ...typescriptConfigs.strictTypeChecked,
   ...typescriptConfigs.stylisticTypeChecked,
   { languageOptions: { parserOptions: { projectService: true, tsconfigRootDir: process.cwd() } } },
-  { files: [`**/*.{js,cjs,mjs}`], ...typescriptConfigs.disableTypeChecked },
+  { files: ['**/*.{js,cjs,mjs}'], ...typescriptConfigs.disableTypeChecked },
 );
 
 export default config(
-  { files: [`**/*.{js,cjs,mjs,ts}`] },
+  { files: ['**/*.{js,cjs,mjs,ts}'] },
   { ignores: ['dist', 'coverage'] },
   { languageOptions: { globals: { ...globals.browser, ...globals.node } } },
   js.configs.recommended,
