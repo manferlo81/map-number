@@ -42,10 +42,9 @@
     "dev": "bundlib -dw",
     "ci-build": "run-s lint test build",
     "clean-build": "run-s clean ci-build",
-    "prerelease": "run-s clean ci-build",
+    "prerelease": "run-s clean-build",
     "release": "standard-version",
-    "config-husky": "husky",
-    "prepare": "run-s config-husky"
+    "prepare": "husky"
   },
   "devDependencies": {
     "@babel/core": "^7.26.0",
@@ -53,7 +52,7 @@
     "@eslint/js": "^9.14.0",
     "@stylistic/eslint-plugin": "^2.10.1",
     "@types/jest": "^29.5.14",
-    "@types/node": "^22.8.7",
+    "@types/node": "^22.9.0",
     "bundlib": "^0.21.4",
     "chokidar": "^4.0.1",
     "core-js": "^3.39.0",
