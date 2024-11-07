@@ -1,24 +1,22 @@
 changelog:
   exclude:
-    authors:
-      - dependabot
     labels:
-      - no-release
+      - exclude from release
 
   categories:
     - title: ":bangbang: Breaking Changes"
       labels:
+        - breaking change
         - breaking
-        - breaking-change
 
     - title: ":heart: Features"
       labels:
-        - feat
         - feature
+        - feat
 
     - title: ":bug: Bug Fixes"
       labels:
-        - bug-fix
+        - bug fix
         - fix
 
     - title: Other Changes
