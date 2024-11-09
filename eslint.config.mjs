@@ -3,42 +3,14 @@ import stylistic from '@stylistic/eslint-plugin';
 import globals from 'globals';
 import { config, configs as typescriptConfigs } from 'typescript-eslint';
 
-function normalizeRuleEntry(entry) {
-  if (Array.isArray(entry)) return entry;
-  if (['error', 'warn', 'off'].includes(entry)) return entry;
-  return ['error', entry];
-}
-
-function normalizeRuleEntries(rules, pluginName) {
-  const entries = Object.entries(rules).map(
-    ([ruleName, ruleEntry]) => [ruleName, normalizeRuleEntry(ruleEntry)],
-  );
-  if (!pluginName) return Object.fromEntries(entries);
-  const pluginPrefix = `${pluginName}/`;
-  const normalizeRuleName = (ruleName) => {
-    if (ruleName.startsWith(pluginPrefix)) return ruleName;
-    return `${pluginPrefix}${ruleName}`;
-  };
-  return Object.fromEntries(
-    entries.map(
-      ([ruleName, normalizedRuleEntry]) => [normalizeRuleName(ruleName), normalizedRuleEntry],
-    ),
-  );
-}
-
-function normalizeRules(pluginOrRule, rules) {
-  if (!rules) return normalizeRuleEntries(pluginOrRule);
-  return normalizeRuleEntries(rules, pluginOrRule);
-}
-
 const eslintRules = normalizeRules({
   'no-useless-rename': 'error',
   'object-shorthand': 'error',
+  'no-useless-concat': 'error',
   'prefer-template': 'error',
 });
 
 const stylisticRules = normalizeRules('@stylistic', {
-  indent: 2,
   quotes: 'single',
   'linebreak-style': 'unix',
   'no-extra-parens': 'all',
@@ -47,10 +19,15 @@ const stylisticRules = normalizeRules('@stylistic', {
 });
 
 const typescriptRules = normalizeRules('@typescript-eslint', {
+  'array-type': {
+    default: 'array-simple',
+    readonly: 'array-simple',
+  },
   'restrict-template-expressions': 'off',
 });
 
 const stylisticConfig = stylistic.configs.customize({
+  indent: 2,
   semi: true,
   arrowParens: true,
   quoteProps: 'as-needed',
@@ -73,3 +50,32 @@ export default config(
   ...typescriptConfig,
   { rules: { ...eslintRules, ...stylisticRules, ...typescriptRules } },
 );
+
+function normalizeRuleEntry(entry) {
+  if (Array.isArray(entry) || ['error', 'warn', 'off'].includes(entry)) return entry;
+  return ['error', entry];
+}
+
+function normalizeRulesObject(rules, pluginName) {
+  const entries = Object.entries(rules);
+  if (!pluginName) return Object.fromEntries(
+    entries.map(
+      ([ruleName, ruleEntry]) => [ruleName, normalizeRuleEntry(ruleEntry)],
+    ),
+  );
+  const pluginPrefix = `${pluginName}/`;
+  const normalizeRuleName = (ruleName) => {
+    if (ruleName.startsWith(pluginPrefix)) return ruleName;
+    return `${pluginPrefix}${ruleName}`;
+  };
+  return Object.fromEntries(
+    entries.map(
+      ([ruleName, ruleEntry]) => [normalizeRuleName(ruleName), normalizeRuleEntry(ruleEntry)],
+    ),
+  );
+}
+
+function normalizeRules(pluginOrRule, rules) {
+  if (!rules) return normalizeRulesObject(pluginOrRule);
+  return normalizeRulesObject(rules, pluginOrRule);
+}
