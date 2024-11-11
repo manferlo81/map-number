@@ -37,10 +37,19 @@ jobs:
           COVERAGE: CI
 
       - name: Upload Coverage Report
+        id: upload-coverage
         uses: codecov/codecov-action@v4
         with:
           directory: coverage
           token: ${{ secrets.CODECOV_TOKEN }}
+
+      - name: Show Coverage Report URL
+        run: |
+          echo "### Coverage Report Uploaded!" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "${{ env.REPORT_URL }}" >> $GITHUB_STEP_SUMMARY
+        env:
+          REPORT_URL: https://app.codecov.io/github/${{ github.repository }}/commit/${{ github.sha }}
 
   job_create_release:
     name: Create GitHub Release
