@@ -1,6 +1,7 @@
 # map-number
 
 [![CircleCI](https://circleci.com/gh/manferlo81/map-number.svg?style=svg)](https://circleci.com/gh/manferlo81/map-number)
+[![CI](https://github.com/manferlo81/map-number/actions/workflows/ci.yml/badge.svg?branch=main&event=push)](https://github.com/manferlo81/map-number/actions/workflows/ci.yml)
 [![npm](https://badgen.net/npm/v/map-number)](https://www.npmjs.com/package/map-number)
 [![codecov](https://codecov.io/gh/manferlo81/map-number/branch/main/graph/badge.svg)](https://codecov.io/gh/manferlo81/map-number)
 [![jsDelivr](https://data.jsdelivr.com/v1/package/npm/map-number/badge?style=rounded)](https://www.jsdelivr.com/package/npm/map-number)
