@@ -64,15 +64,6 @@ commands:
       - attach_workspace:
           at: ~/map-number
 
-  command_publish_to_npm:
-    steps:
-      - run:
-          name: Login to npm
-          command: echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" > .npmrc
-      - run:
-          name: Publish to npm
-          command: npm publish
-
 jobs:
   job_lint:
     description: Lint Code
@@ -110,13 +101,6 @@ jobs:
     steps:
       - command_checkout_cache_install
       - command_test_and_build
-
-  job_publish_to_npm:
-    description: Publish package to npm
-    executor: executor_node_20
-    steps:
-      - command_restore_workspace
-      - command_publish_to_npm
 
 workflows:
   workflow_ci:
@@ -163,16 +147,3 @@ workflows:
               only: /.*/
             branches:
               only: /.*/
-
-      - job_publish_to_npm:
-          context: npm
-          requires:
-            - job_node_18_test_and_build
-            - job_node_20_test_and_build
-            - job_node_21_test_and_build
-            - job_node_22_test_and_build
-          filters:
-            tags:
-              only: /^v\d+\.\d+\.\d+$/
-            branches:
-              ignore: /.*/
