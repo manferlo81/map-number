@@ -1,8 +1,5 @@
 version: 2.1
 
-orbs:
-  codecov: codecov/codecov@4.1.0
-
 executors:
   executor_node_18:
     docker:
@@ -114,14 +111,6 @@ jobs:
       - command_checkout_cache_install
       - command_test_and_build
 
-  job_upload_coverage:
-    description: Upload coverage to Codecov
-    executor: executor_node_20
-    steps:
-      - command_restore_workspace
-      - codecov/upload:
-          file: coverage/*.json
-
   job_publish_to_npm:
     description: Publish package to npm
     executor: executor_node_20
@@ -174,16 +163,6 @@ workflows:
               only: /.*/
             branches:
               only: /.*/
-
-      - job_upload_coverage:
-          requires:
-            - job_node_18_test_and_build
-            - job_node_20_test_and_build
-            - job_node_21_test_and_build
-            - job_node_22_test_and_build
-          filters:
-            branches:
-              only: /main/
 
       - job_publish_to_npm:
           context: npm
