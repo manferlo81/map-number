@@ -51,8 +51,8 @@ const typescriptPluginConfig = config(
 );
 
 export default config(
-  { files: ['**/*.{js,mjs,cjs,ts}'] },
   { ignores: ['dist', 'coverage'] },
+  { files: ['**/*.{js,mjs,cjs,ts}'] },
   { languageOptions: { globals: { ...globals.browser, ...globals.node } } },
   javascriptPluginConfig,
   stylisticPluginConfig,
@@ -61,7 +61,7 @@ export default config(
 
 function normalizeRuleEntry(entry) {
   if (Array.isArray(entry)) return entry;
-  if (['error', 'warn', 'off'].includes(entry)) return entry;
+  if (['error', 'off', 'warn'].includes(entry)) return entry;
   return ['error', entry];
 }
 
@@ -81,7 +81,6 @@ function createEntryNormalizer(pluginName) {
 
 function normalizeRules(pluginName, rules) {
   if (!rules && pluginName) return normalizeRules(null, pluginName);
-  const entries = Object.entries(rules);
   const normalizeEntry = createEntryNormalizer(pluginName);
-  return Object.fromEntries(entries.map(normalizeEntry));
+  return Object.fromEntries(Object.entries(rules).map(normalizeEntry));
 }
