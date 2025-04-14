@@ -1,10 +1,10 @@
 import { map } from './map';
 import { max, min } from './math';
 
-export function limit(num: number, inMin: number, inMax: number, outMin: number, outMax: number): number {
-  const boundMin = min(outMin, outMax);
-  const boundMax = max(outMin, outMax);
-  const result = map(num, inMin, inMax, outMin, outMax);
+export function limit(input: number, inputMin: number, inputMax: number, outputMin: number, outputMax: number): number {
+  const boundMin = min(outputMin, outputMax);
+  const boundMax = max(outputMin, outputMax);
+  const result = map(input, inputMin, inputMax, outputMin, outputMax);
   if (result < boundMin) return boundMin;
   if (result > boundMax) return boundMax;
   return result;

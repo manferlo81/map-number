@@ -1,0 +1,25 @@
+{
+  "compilerOptions": {
+    "lib": [],
+    "target": "ESNext",
+    "module": "CommonJS",
+    "moduleResolution": "Node10",
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "isolatedModules": true,
+    "strict": true,
+    "noImplicitAny": true,
+    "noImplicitThis": true,
+    "noImplicitReturns": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "declaration": true,
+    "declarationMap": true,
+    "importHelpers": true,
+    "newLine": "lf"
+  },
+  "exclude": [
+    "dist",
+    "coverage"
+  ]
+}
