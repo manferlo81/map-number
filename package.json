@@ -24,7 +24,7 @@
   "main": "./dist/commonjs/index.cjs",
   "module": "./dist/esm/map.mjs",
   "jsnext:main": "./dist/esm/map.mjs",
-  "browser": "./dist/umd/map.js",
+  "browser": "./dist/umd/map.umd.js",
   "types": "./dist/types/index.d.ts",
   "typings": "./dist/types/index.d.ts",
   "files": [

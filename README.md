@@ -60,13 +60,13 @@ pnpm add map-number
 ### jsDelivr
 
 ```html
-<script src="https://cdn.jsdelivr.net/npm/map-number@latest/dist/umd/map.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/map-number@latest/dist/umd/map.umd.js"></script>
 ```
 
 ***for production***
 
 ```html
-<script src="https://cdn.jsdelivr.net/npm/map-number@latest/dist/umd/map.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/map-number@latest/dist/umd/map.umd.min.js"></script>
 ```
 
 > *for production you may want to replace the "latest" version for a specific one.*
@@ -76,13 +76,13 @@ pnpm add map-number
 ### unpkg
 
 ```html
-<script src="https://unpkg.com/map-number@latest/dist/umd/map.js"></script>
+<script src="https://unpkg.com/map-number@latest/dist/umd/map.umd.js"></script>
 ```
 
 ***for production***
 
 ```html
-<script src="https://unpkg.com/map-number@latest/dist/umd/map.min.js"></script>
+<script src="https://unpkg.com/map-number@latest/dist/umd/map.umd.min.js"></script>
 ```
 
 > *for production you may want to replace the "latest" version for a specific one.*
