@@ -5,5 +5,5 @@ export default config({
   interop: true,
   name: 'mapNum',
   min: ['browser', 'module'],
-  project: 'tsconfig-build.json',
+  project: 'tsconfig.build.json',
 });
