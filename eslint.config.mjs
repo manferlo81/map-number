@@ -80,25 +80,23 @@ export default config(
 
 function normalizeRulesConfig(pluginName, rules) {
   if (!rules && pluginName) return normalizeRulesConfig(null, pluginName);
-  const entries = Object.entries(rules);
-  if (!entries.length) return {};
   const normalizeEntry = createEntryNormalizer(pluginName);
-  const entriesNormalized = entries.map(normalizeEntry);
+  const entriesNormalized = Object.entries(rules).map(normalizeEntry);
   const rulesNormalized = Object.fromEntries(entriesNormalized);
   return { rules: rulesNormalized };
 }
 
 function createEntryNormalizer(pluginName) {
   if (!pluginName) return ([ruleName, ruleEntry]) => [ruleName, normalizeRuleEntry(ruleEntry)];
-  const normalizeRuleName = createPluginRuleNameNormalizer(pluginName);
+  const normalizeRuleName = createPluginKeyNormalizer(pluginName);
   return ([ruleName, ruleEntry]) => [normalizeRuleName(ruleName), normalizeRuleEntry(ruleEntry)];
 }
 
-function createPluginRuleNameNormalizer(pluginName) {
+function createPluginKeyNormalizer(pluginName) {
   const pluginPrefix = `${pluginName}/`;
-  return (ruleName) => {
-    if (ruleName.startsWith(pluginPrefix)) return ruleName;
-    return `${pluginPrefix}${ruleName}`;
+  return (key) => {
+    if (key.startsWith(pluginPrefix)) return key;
+    return `${pluginPrefix}${key}`;
   };
 }
 

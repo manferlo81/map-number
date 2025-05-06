@@ -1,8 +1,5 @@
 {
   "compilerOptions": {
-    "lib": [],
-    "target": "ESNext",
-    "module": "CommonJS",
     "moduleResolution": "Node10",
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
