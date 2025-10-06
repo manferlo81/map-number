@@ -1,54 +1,38 @@
+import globals from 'globals';
+
 import pluginJavascript from '@eslint/js';
 import pluginStylistic from '@stylistic/eslint-plugin';
 import { flatConfigs as pluginImportConfigs } from 'eslint-plugin-import-x';
-import globals from 'globals';
-import { config, configs as pluginTypescriptConfigs } from 'typescript-eslint';
+import { config as defineConfig, configs as pluginTypescriptConfigs } from 'typescript-eslint';
 
-const javascriptPluginConfig = config(
-  pluginJavascript.configs.recommended,
-  normalizeRulesConfig({
+// Constants
+
+const PATTERN_JS = '**/*.{js,mjs,cjs}';
+const PATTERN_TS = '**/*.{ts,mts,cts}';
+
+const FILES_TS_ONLY = [PATTERN_TS];
+const FILES_ALL = [PATTERN_JS, PATTERN_TS];
+
+// Plugin Javascript
+
+const configPluginJavascript = defineConfig({
+  rules: ruleNormalizer()({
     'no-useless-rename': 'error',
     'object-shorthand': 'error',
     'no-useless-concat': 'error',
     'prefer-template': 'error',
     eqeqeq: 'smart',
   }),
-);
+  files: FILES_ALL,
+  extends: [
+    pluginJavascript.configs.recommended,
+  ],
+});
 
-const importPluginConfig = config(
-  pluginImportConfigs.recommended,
-  pluginImportConfigs.typescript,
-  normalizeRulesConfig('import-x', {
-    'consistent-type-specifier-style': 'error',
-    'no-useless-path-segments': 'error',
-    'no-absolute-path': 'error',
-    'no-cycle': 'error',
-    'no-nodejs-modules': 'error',
-  }),
-);
+// Plugin Typescript
 
-const stylisticPluginConfig = config(
-  pluginStylistic.configs.customize({
-    indent: 2,
-    semi: true,
-    arrowParens: true,
-    quoteProps: 'as-needed',
-    braceStyle: '1tbs',
-  }),
-  normalizeRulesConfig('@stylistic', {
-    quotes: 'single',
-    'linebreak-style': 'unix',
-    'no-extra-parens': 'all',
-    'no-extra-semi': 'error',
-    'padded-blocks': 'off',
-  }),
-);
-
-const typescriptPluginConfig = config(
-  { languageOptions: { parserOptions: { projectService: true, tsconfigRootDir: import.meta.dirname } } },
-  pluginTypescriptConfigs.strictTypeChecked,
-  pluginTypescriptConfigs.stylisticTypeChecked,
-  normalizeRulesConfig('@typescript-eslint', {
+const typescriptPluginConfig = defineConfig({
+  rules: ruleNormalizer({ plugin: '@typescript-eslint' })({
     'array-type': { default: 'array-simple', readonly: 'array-simple' },
     'restrict-template-expressions': {
       allowNumber: true,
@@ -60,46 +44,103 @@ const typescriptPluginConfig = config(
       allowArray: false,
     },
   }),
-  {
-    ...pluginTypescriptConfigs.disableTypeChecked,
-    files: ['**/*.{js,mjs,cjs}'],
-  },
-);
+  files: FILES_TS_ONLY,
+  languageOptions: { parserOptions: { projectService: true, tsconfigRootDir: import.meta.dirname } },
+  extends: [
+    pluginTypescriptConfigs.strictTypeChecked,
+    pluginTypescriptConfigs.stylisticTypeChecked,
+  ],
+});
 
-export default config(
+// Plugin Import
+
+const configPluginImport = defineConfig({
+  rules: ruleNormalizer({ plugin: 'import-x' })({
+    'consistent-type-specifier-style': 'error',
+    'no-useless-path-segments': 'error',
+    'no-absolute-path': 'error',
+    'no-cycle': 'error',
+    'no-nodejs-modules': 'error',
+  }),
+  files: FILES_ALL,
+  extends: [
+    pluginImportConfigs.recommended,
+    pluginImportConfigs.typescript,
+  ],
+});
+
+// Plugin Stylistic
+
+const configPluginStylistic = defineConfig({
+  rules: ruleNormalizer({ plugin: '@stylistic' })({
+    indent: ['error', 2],
+    quotes: 'single',
+    'linebreak-style': 'unix',
+    'no-extra-parens': 'all',
+    'no-extra-semi': 'error',
+    'padded-blocks': 'off',
+  }),
+  files: FILES_ALL,
+  extends: [
+    pluginStylistic.configs.customize({
+      semi: true,
+      arrowParens: true,
+      quoteProps: 'as-needed',
+      braceStyle: '1tbs',
+    }),
+  ],
+});
+
+// Config
+
+export default defineConfig(
   { ignores: ['dist', 'coverage'] },
   { languageOptions: { globals: { ...globals.browser, ...globals.node } } },
-  { files: ['**/*.{js,mjs,cjs,ts}'] },
-  javascriptPluginConfig,
-  importPluginConfig,
-  stylisticPluginConfig,
+  configPluginJavascript,
+  configPluginImport,
+  configPluginStylistic,
   typescriptPluginConfig,
 );
 
-function normalizeRulesConfig(pluginName, rules) {
-  if (!rules && pluginName) return normalizeRulesConfig(null, pluginName);
-  const normalizeEntry = createEntryNormalizer(pluginName);
-  const entriesNormalized = Object.entries(rules).map(normalizeEntry);
-  const rulesNormalized = Object.fromEntries(entriesNormalized);
-  return { rules: rulesNormalized };
-}
+// Helpers
 
-function createEntryNormalizer(pluginName) {
-  if (!pluginName) return ([ruleName, ruleEntry]) => [ruleName, normalizeRuleEntry(ruleEntry)];
-  const normalizeRuleName = createPluginKeyNormalizer(pluginName);
-  return ([ruleName, ruleEntry]) => [normalizeRuleName(ruleName), normalizeRuleEntry(ruleEntry)];
-}
+function ruleNormalizer({ plugin: pluginName } = {}) {
 
-function createPluginKeyNormalizer(pluginName) {
+  function normalizeRuleEntry(entry) {
+    if (Array.isArray(entry)) return entry;
+    if (['error', 'off', 'warn'].includes(entry)) return entry;
+    return ['error', entry];
+  }
+
+  function createRuleNormalizer(normalizeObjectEntry) {
+    return (rules) => {
+      const entries = Object.entries(rules);
+      const entriesNormalized = entries.map(normalizeObjectEntry);
+      return Object.fromEntries(entriesNormalized);
+    };
+  }
+
+  if (!pluginName) {
+    return createRuleNormalizer(
+      ([ruleName, ruleEntry]) => [
+        ruleName,
+        normalizeRuleEntry(ruleEntry),
+      ],
+    );
+  }
+
   const pluginPrefix = `${pluginName}/`;
-  return (key) => {
+
+  const normalizeRuleName = (key) => {
     if (key.startsWith(pluginPrefix)) return key;
     return `${pluginPrefix}${key}`;
   };
-}
 
-function normalizeRuleEntry(entry) {
-  if (Array.isArray(entry)) return entry;
-  if (['error', 'off', 'warn'].includes(entry)) return entry;
-  return ['error', entry];
+  return createRuleNormalizer(
+    ([ruleName, ruleEntry]) => [
+      normalizeRuleName(ruleName),
+      normalizeRuleEntry(ruleEntry),
+    ],
+  );
+
 }
