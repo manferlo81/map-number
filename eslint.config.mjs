@@ -1,9 +1,10 @@
+import { defineConfig, globalIgnores } from 'eslint/config';
 import globals from 'globals';
 
 import pluginJavascript from '@eslint/js';
 import pluginStylistic from '@stylistic/eslint-plugin';
 import { flatConfigs as pluginImportConfigs } from 'eslint-plugin-import-x';
-import { config as defineConfig, configs as pluginTypescriptConfigs } from 'typescript-eslint';
+import { configs as pluginTypescriptConfigs } from 'typescript-eslint';
 
 // Constants
 
@@ -94,7 +95,7 @@ const configPluginStylistic = defineConfig({
 // Config
 
 export default defineConfig(
-  { ignores: ['dist', 'coverage'] },
+  globalIgnores(['dist', 'coverage']),
   { languageOptions: { globals: { ...globals.browser, ...globals.node } } },
   configPluginJavascript,
   configPluginTypescript,
@@ -106,32 +107,50 @@ export default defineConfig(
 
 function ruleNormalizer({ severity: defaultSeverity = 'error', plugin: pluginName } = {}) {
 
-  const isDefaultSeverity = (ruleEntry) => ['error', 'warn', 1, 2].includes(ruleEntry);
+  // Throw TypeError if default severity is not valid
+  const isDefaultSeverity = (entry) => ['error', 'warn', 1, 2].includes(entry);
+  if (!isDefaultSeverity(defaultSeverity)) throw new TypeError('Invalid default severity.');
 
-  if (!isDefaultSeverity(defaultSeverity)) throw new TypeError('Invalid default severity');
+  // User severity resolver
+  const resolveSeverity = (entry) => {
 
-  const resolveSeverity = (ruleEntry) => {
-    if (ruleEntry === 'on' || ruleEntry === true) return [true, defaultSeverity];
-    if (ruleEntry === false) return [true, 'off'];
-    return [ruleEntry === 'off' || ruleEntry === 0 || isDefaultSeverity(ruleEntry), ruleEntry];
+    // Resolve to default severity if entry is "on" or true
+    if (entry === 'on' || entry === true) return [true, defaultSeverity];
+
+    // Resolve to "off" if entry is false or nullish
+    if (entry === false || entry == null) return [true, 'off'];
+
+    // Resolve to entry if it's a valid severity
+    return [entry === 'off' || entry === 0 || isDefaultSeverity(entry), entry];
   };
 
-  const normalizeRuleEntry = (ruleEntry) => {
+  // Rule entry normalizer
+  const normalizeRuleEntry = (entry) => {
 
-    const [isValidSeverity, severity] = resolveSeverity(ruleEntry);
+    // Return severity if it resolves to a valid severity
+    const [isValidSeverity, severity] = resolveSeverity(entry);
     if (isValidSeverity) return severity;
 
-    if (Array.isArray(ruleEntry)) {
-      if (!ruleEntry.length) return defaultSeverity;
-      const [first, ...rest] = ruleEntry;
+    // Process entry as array
+    if (Array.isArray(entry)) {
+
+      // Return default severity if array is empty
+      if (!entry.length) return defaultSeverity;
+
+      // Return severity rule first element resolves to a valid severity
+      const [first, ...rest] = entry;
       const [isValidSeverity, severity] = resolveSeverity(first);
       if (isValidSeverity) return [severity, ...rest];
-      return [defaultSeverity, ...ruleEntry];
+
+      // Return default severity rule with options
+      return [defaultSeverity, ...entry];
     }
 
-    return [defaultSeverity, ruleEntry];
+    // Return default severity rule with one option
+    return [defaultSeverity, entry];
   };
 
+  // Rule normalizer factory
   const createRuleNormalizer = (normalizeObjectEntry) => {
     return (rules) => {
       const entries = Object.entries(rules);
@@ -140,26 +159,30 @@ function ruleNormalizer({ severity: defaultSeverity = 'error', plugin: pluginNam
     };
   };
 
+  // Return simplified normalizer if no plugin defined
   if (!pluginName) {
     return createRuleNormalizer(
-      ([ruleName, ruleEntry]) => [
+      ([ruleName, entry]) => [
         ruleName,
-        normalizeRuleEntry(ruleEntry),
+        normalizeRuleEntry(entry),
       ],
     );
   }
 
+  // Declare plugin prefix
   const pluginPrefix = `${pluginName}/`;
 
+  // Rule name normalizer
   const normalizeRuleName = (ruleName) => {
     if (ruleName.startsWith(pluginPrefix)) return ruleName;
     return `${pluginPrefix}${ruleName}`;
   };
 
+  // Return rule normalizer
   return createRuleNormalizer(
-    ([ruleName, ruleEntry]) => [
+    ([ruleName, entry]) => [
       normalizeRuleName(ruleName),
-      normalizeRuleEntry(ruleEntry),
+      normalizeRuleEntry(entry),
     ],
   );
 
