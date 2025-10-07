@@ -1,4 +1,5 @@
-import { MapNumberFunction, transform } from '../src';
+import { transform } from '../src';
+import type { MapNumberFunction } from '../src';
 
 describe('"transform" method', () => {
 

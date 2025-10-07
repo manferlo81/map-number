@@ -1,17 +1,25 @@
 {
   "compilerOptions": {
-    "moduleResolution": "Node10",
+    // module
+    "target": "es2020",
+    "module": "es2015",
+    "moduleResolution": "node10",
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
     "isolatedModules": true,
+    "verbatimModuleSyntax": true,
+    // Lib
+    "lib": [],
+    "skipLibCheck": true,
+    "skipDefaultLibCheck": true,
+    // Strict
     "strict": true,
     "noImplicitAny": true,
     "noImplicitThis": true,
     "noImplicitReturns": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
-    "declaration": true,
-    "declarationMap": true,
+    // Misc
     "importHelpers": true,
     "newLine": "lf"
   },
