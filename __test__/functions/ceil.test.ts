@@ -1,6 +1,6 @@
-import { ceil } from '../src';
+import { ceil } from '../../src';
 
-describe('"ceil" method', () => {
+describe('"ceil" function', () => {
 
   test('Should return in-range output', () => {
     const ceilValue = (value: number) => ceil(value, 20, 50, 2, 5);

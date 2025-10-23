@@ -1,6 +1,6 @@
-import { limit } from '../src';
+import { limit } from '../../src';
 
-describe('"limit" method', () => {
+describe('"limit" function', () => {
 
   test('Should return in-range output', () => {
     const limitValue = (value: number) => limit(value, 20, 50, 2, 5);

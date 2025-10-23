@@ -1,6 +1,6 @@
-import { round } from '../src';
+import { round } from '../../src';
 
-describe('"round" method', () => {
+describe('"round" function', () => {
 
   test('Should return in-range output', () => {
     const roundValue = (value: number) => round(value, 20, 50, 2, 5);

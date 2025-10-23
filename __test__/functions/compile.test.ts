@@ -1,6 +1,6 @@
-import { compile, map } from '../src';
+import { compile, map } from '../../src';
 
-describe('"compile" method', () => {
+describe('"compile" function', () => {
 
   test('Should return the correct output', () => {
 

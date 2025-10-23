@@ -1,6 +1,6 @@
-import { map } from '../src';
+import { map } from '../../src';
 
-describe('"map" method', () => {
+describe('"map" function', () => {
 
   test('Should return in-range output', () => {
     const mapValue = (value: number) => map(value, 2, 5, 20, 50);

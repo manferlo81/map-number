@@ -1,7 +1,7 @@
-import { transform } from '../src';
-import type { MapNumberFunction } from '../src';
+import type { MapNumberFunction } from '../../src';
+import { transform } from '../../src';
 
-describe('"transform" method', () => {
+describe('"transform" function', () => {
 
   test('Should transform map function output', () => {
 

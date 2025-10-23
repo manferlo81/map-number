@@ -1,6 +1,6 @@
-import { floor } from '../src';
+import { floor } from '../../src';
 
-describe('"floor" method', () => {
+describe('"floor" function', () => {
 
   test('Should return in-range output', () => {
     const floorValue = (value: number) => floor(value, 20, 50, 2, 5);
