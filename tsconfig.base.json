@@ -14,11 +14,11 @@
     "skipDefaultLibCheck": true,
     // Strict
     "strict": true,
-    "noImplicitAny": true,
-    "noImplicitThis": true,
     "noImplicitReturns": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
+    "allowUnreachableCode": false,
+    "allowUnusedLabels": false,
     // Misc
     "importHelpers": true,
     "newLine": "lf"

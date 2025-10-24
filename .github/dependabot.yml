@@ -24,9 +24,9 @@ updates:
           - eslint
           - globals
           - typescript-eslint
-          - eslint-plugin-*
-          - "@*/eslint-plugin"
           - "@eslint/*"
+          - "@*/eslint-plugin"
+          - eslint-plugin-*
           - eslint-*
 
       test:
@@ -37,8 +37,9 @@ updates:
         patterns:
           - jest
           - ts-jest
+          - "@types/jest"
 
-      babel:
+      build:
         dependency-type: development
         update-types:
           - minor
@@ -46,6 +47,7 @@ updates:
         patterns:
           - "@babel/*"
           - core-js
+          - bundlib
 
       types:
         dependency-type: development
@@ -54,6 +56,7 @@ updates:
           - patch
         patterns:
           - "@types/*"
+          - typescript
 
       others:
         dependency-type: development
@@ -61,8 +64,4 @@ updates:
           - minor
           - patch
         patterns:
-          - rimraf
-          - husky
-          - chokidar
-          - npm-run-all
-          - standard-version
+          - "*"
